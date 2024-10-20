@@ -1,0 +1,8 @@
+/* src/pages/dashboard/DashboardPage.css */
+.dashboard {
+    display: flex;
+    flex-direction: column;
+    height: 100vh;
+    background-color: #f0f2f5; /* Light background */
+  }
+  
