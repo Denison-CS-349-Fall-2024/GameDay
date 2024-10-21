@@ -6,6 +6,7 @@ import Login from './pages/Login/Login'; // Make sure this matches correctly
 import SignUpPage from './pages/signup/SignUp';
 import ForgotPasswordPage from './pages/forgotpassword/ForgotPassword';
 import DashboardPage from './pages/dashboard/Dashboard';
+import HomeScreen from './components/home/home';
 
 const App = () => {
   return (
@@ -16,6 +17,7 @@ const App = () => {
         <Route path="/signup" element={<SignUpPage />} />
         <Route path="/forgot-password" element={<ForgotPasswordPage />} />
         <Route path="/dashboard" element={<DashboardPage />} />
+        <Route path="/home" element={<HomeScreen />} /> 
       </Routes>
     </Router>
   );
