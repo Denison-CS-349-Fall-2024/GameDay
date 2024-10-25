@@ -2,7 +2,7 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import './Login.css';
-import loginInfo from './loginInfo.json'; // Read the JSON file for stored login info
+import loginInfo from '../../data/loginInfo.json'; // Read the JSON file for stored login info
 
 const Login = () => {
   const [username, setUsername] = useState('');
