@@ -14,14 +14,22 @@ const HomeScreen = () => {
     navigate('/standings');
   };
 
+  const handleLogin = () => {
+    navigate('/login');
+  };
+
+  const handleSignUp = () => {
+    navigate('/signup');
+  };
+
   return (
     <div className="home-container">
       {/* Top header with Login and Sign Up buttons */}
       <div className="top-header">
         <h1>GameDay</h1>
         <div className="top-buttons">
-          <button className="header-button">Login</button>
-          <button className="header-button">Sign Up</button>
+          <button className="header-button" onClick={handleLogin}>Login</button>
+          <button className="header-button" onClick={handleSignUp}>Sign Up</button>
         </div>
       </div>
 

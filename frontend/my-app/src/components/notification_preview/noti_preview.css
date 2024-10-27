@@ -1,0 +1,66 @@
+.component-square {
+    width: 48%; /* Ensure both components take equal width */
+    padding: 20px;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    background-color: #f9f9f9;
+    box-shadow: 2px 2px 12px rgba(0, 0, 0, 0.1);
+    display: flex;
+    flex-direction: column; /* Ensures content inside flows vertically */
+    justify-content: space-between; /* Space out content and button */
+    min-height: 300px; /* Ensures components have consistent height */
+  }
+  
+  .component-square h3 {
+    margin-bottom: 15px;
+    font-size: 1.2rem;
+  }
+  
+  .component-square ul {
+    list-style-type: none; /* Remove bullet points */
+    padding: 0;
+    margin: 0 0 20px; /* Add spacing below the list */
+    line-height: 1.6; /* Adjust line height for better readability */
+  }
+  
+  .component-square li {
+    margin-bottom: 8px; /* Add spacing between list items */
+  }
+  
+  .component-square table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 10px;
+  }
+  
+  .component-square th,
+  .component-square td {
+    border: 1px solid #ddd;
+    padding: 10px;
+    text-align: center;
+  }
+  
+  .component-square th {
+    background-color: #f2f2f2;
+    font-weight: bold;
+  }
+  
+  .component-square tr:nth-child(even) {
+    background-color: #f9f9f9;
+  }
+  
+  .component-square button {
+    align-self: flex-end; /* Align button to the bottom right */
+    margin-top: 10px;
+    padding: 10px 20px;
+    background-color: #4a90e2;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 1rem;
+  }
+  
+  .component-square button:hover {
+    background-color: #357ab8;
+  }

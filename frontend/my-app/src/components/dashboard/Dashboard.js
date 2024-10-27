@@ -1,5 +1,8 @@
 // src/components/dashboard/Dashboard.js
 import React from 'react';
+import Noti_preview from '../notification_preview/noti_preview';
+import Standing_prevew from '../standings_preview/standings_preview';
+import ScheduleCalendar from '../schedule/scheduleCalendar';
 import './Dashboard.css';
 
 const DashboardComponent = () => {
@@ -21,7 +24,11 @@ const DashboardComponent = () => {
           <p>Here, you can input and view schedule data.</p>
         </section>
         <section>
-          {/* Future: Add components for viewing and inputting schedule */}
+          <div className='dashboard-components'>
+            <Noti_preview />
+            <Standing_prevew />
+          </div>
+          <ScheduleCalendar />
         </section>
       </main>
     </div>
