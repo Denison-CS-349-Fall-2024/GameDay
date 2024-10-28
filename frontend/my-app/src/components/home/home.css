@@ -60,7 +60,7 @@
 }
 
 /* Calendar container */
-.calendar-container {
+/* .calendar-container {
   width: 100%;
   max-width: 600px;
   background-color: #f8f9fa;
@@ -76,7 +76,7 @@
   display: flex;
   align-items: center;
   justify-content: center;
-}
+} */
 
 /* Footer with blue background and centered buttons */
 .footer {
@@ -103,4 +103,9 @@
   background-color: #003a75;
 }
 
-  
+.calendar-box {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+  margin-top: 20px;
+}
