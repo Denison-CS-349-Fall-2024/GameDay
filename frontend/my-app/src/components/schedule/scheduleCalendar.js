@@ -1,4 +1,7 @@
+
+
 // ScheduleCalendar.js
+
 import React from 'react';
 import { Calendar, momentLocalizer } from 'react-big-calendar';
 import moment from 'moment';
@@ -6,6 +9,8 @@ import 'react-big-calendar/lib/css/react-big-calendar.css';
 import './scheduleCalendar.css';
 
 const localizer = momentLocalizer(moment);
+
+
 
 const events = [
   { title: 'Midi - Licking Heights Team1 vs Lakewood Team2', start: new Date(2024, 10, 19, 16, 0), end: new Date(2024, 10, 19, 18, 0) },
@@ -57,23 +62,22 @@ const events = [
   { title: 'Senior - Watkins Memorial Team2 vs Lakewood Team1', start: new Date(2024, 9, 6, 16, 0), end: new Date(2024, 9, 6, 18, 0) }
 ];
 
-
 const ScheduleCalendar = () => (
-    <div className="calendar-wrapper">
-        <h3 className="calendar-title">Team Schedule</h3>
-        <Calendar
-        localizer={localizer}
-        events={events}
-        startAccessor="start"
-        endAccessor="end"
-        style={{ height: '60vh', width: '100%' }}
-        views={['month', 'week', 'day']}
-        defaultView="week"
-        />
+  <div className="calendar-wrapper">
+    <h3 className="calendar-title">Team Schedule</h3>
+    <Calendar
+      localizer={localizer}
+      events={events}
+      startAccessor="start"
+      endAccessor="end"
+      style={{ height: '70vh', width: '100%' }} // Full width of the wrapper, fixed height
+      views={['month', 'week', 'day']}
+      defaultView="week"
+    />
     <div className="export-button">
       <button>Export Schedule</button>
     </div>
-    </div>
+  </div>
 );
 
 export default ScheduleCalendar;
