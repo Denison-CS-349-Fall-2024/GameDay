@@ -14,12 +14,12 @@ const App = () => {
   return (
     <Router>
       <Routes>
-        <Route path="/" element={<Navigate to="/home" replace />} />
+        {/* <Route path="/" element={<Navigate to="/home" replace />} /> */}
         <Route path="/login" element={<Login />} />
         <Route path="/signup" element={<SignUpPage />} />
         <Route path="/forgot-password" element={<ForgotPasswordPage />} />
         <Route path="/dashboard" element={<DashboardPage />} />
-        <Route path="/home" element={<HomeScreen />} />
+        <Route path="/" element={<HomeScreen />} />
         <Route path="/notifications" element={<Notifications />} />
         <Route path="/standings" element={<Standings />} /> {/* Lowercase route for Standings */}
       </Routes>
