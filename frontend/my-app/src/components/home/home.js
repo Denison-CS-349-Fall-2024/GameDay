@@ -1,7 +1,7 @@
 // src/components/home/home.js
 import React from 'react';
 import { useNavigate } from 'react-router-dom';
-import ScheduleCalendar from '../schedule/scheduleCalendar'; // Keep this to display the calendar
+import ScheduleSwitcher  from '../schedule_switcher/schedule_switcher'; 
 import './home.css';
 
 const HomeScreen = () => {
@@ -40,10 +40,9 @@ const HomeScreen = () => {
         <button className="header-button" onClick={handleStandingsClick}>Standings</button>
       </div>
 
-      {/* Calendar component */}
-      <div className="calendar-box">
-        <h2></h2>
-        <ScheduleCalendar /> {/* Keeps your calendar integrated in the layout */}
+
+      <div className="schedule-switcher">
+        <ScheduleSwitcher/> 
       </div>
 
       {/* Footer with Contact Us and Meet the Team buttons */}

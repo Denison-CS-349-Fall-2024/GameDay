@@ -1,8 +1,8 @@
-// src/components/dashboard/Dashboard.js
 import React from 'react';
-import Noti_preview from '../notification_preview/noti_preview';
-import Standing_prevew from '../standings_preview/standings_preview';
-import ScheduleCalendar from '../schedule/scheduleCalendar';
+import NotiPreview from '../notification_preview/noti_preview'; // Updated to PascalCase
+import StandingPreview from '../standings_preview/standings_preview'; // Updated to PascalCase
+import ScheduleSwitcher  from '../schedule_switcher/schedule_switcher'; 
+
 import './Dashboard.css';
 
 const DashboardComponent = () => {
@@ -25,10 +25,15 @@ const DashboardComponent = () => {
         </section>
         <section>
           <div className='dashboard-components'>
-            <Noti_preview />
-            <Standing_prevew />
+            <NotiPreview />  {/* Use the updated PascalCase component */}
+            <StandingPreview />  {/* Use the updated PascalCase component */}
           </div>
-          <ScheduleCalendar />
+
+          <div className="schedule-switcher">
+            <ScheduleSwitcher/> 
+          </div>
+
+
         </section>
       </main>
     </div>
