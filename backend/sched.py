@@ -4,7 +4,7 @@ import random
 
 # Define schools and their teams
 schools = ['Watkins Memorial', 'Licking Heights', 'Lakewood', 'Utica', 'Heath', 'Johnstown']
-leagues = ['Midi', 'Junior', 'Senior']
+leagues = ['Mini', 'Junior', 'Senior']
 teams_per_school_per_league = 4  # Assuming 4 teams per school per league
 
 # Create teams for each school and league
