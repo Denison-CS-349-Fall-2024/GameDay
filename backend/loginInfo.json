@@ -10,5 +10,8 @@
     },
     "user3": {
         "password": "123"
+    },
+    "user4": {
+        "password": "1234"
     }
 }

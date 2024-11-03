@@ -2,7 +2,7 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import './SignUp.css';
-import loginInfo from '../../data/loginInfo.json'; // Read the JSON file for stored login info
+// import loginInfo from '../../data/loginInfo.json'; // Read the JSON file for stored login info
 
 const SignUpComponent = () => {
   const [username, setUsername] = useState('');
@@ -18,10 +18,6 @@ const SignUpComponent = () => {
     }
     if (password !== confirmPassword) {
       alert('Passwords do not match.');
-      return;
-    }
-    if (username in loginInfo) {
-      alert('Username already exists, please choose another one.');
       return;
     }
 
