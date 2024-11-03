@@ -24,35 +24,28 @@ const SignUpComponent = () => {
       alert('Username already exists, please choose another one.');
       return;
     }
-    // Need a backend if we want to store the signup information!!!
 
-    if (true) {
-      alert('Registration successful!');
-      navigate('/dashboard'); // Redirect to dashboard on success
-    } else {
-      alert('Registration failed. Please try again.');
+    // Send request to backend to check username info, if okay then store new information
+    try {
+      const response = await fetch('http://127.0.0.1:5000/api/signup', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ username, password }),
+      });
+
+      const data = await response.json();
+
+      if (response.ok) {
+        alert(data.message)
+        navigate('/dashboard'); // Redirect to dashboard on success
+      } else {
+        alert(data.message)
+      }
+    } catch (error) {
+      console.error('Error:', error);
+      alert('An error occurred. Please try again. Error: ' + error);
     }
   };
-
-    // Simulate sign-up request
-  //   try {
-  //     const response = await fetch('http://localhost:5000/api/users/register', {
-  //       method: 'POST',
-  //       headers: { 'Content-Type': 'application/json' },
-  //       body: JSON.stringify({ username, password })
-  //     });
-
-  //     if (response.ok) {
-  //       alert('Registration successful!');
-  //       navigate('/dashboard'); // Redirect to dashboard on success
-  //     } else {
-  //       alert('Registration failed. Please try again.');
-  //     }
-  //   } catch (error) {
-  //     console.error('Error during registration:', error);
-  //     alert('An error occurred. Please try again later.');
-  //   }
-  // };
 
   return (
     <form className="signup-form" onSubmit={handleSignUp}>

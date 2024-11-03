@@ -4,7 +4,7 @@ __pycache__/          # Bytecode cache directories
 *.pyo                 # Optimized Python files
 
 # Environment and configuration files
-venv/                 # Virtual environment folder (Python)
+venv                 # Virtual environment folder (Python)
 .env                  # Environment variables file
 *.env                 # Other environment variable files
 .DS_Store             # macOS system file, ignore if on macOS
@@ -20,6 +20,6 @@ db.sqlite3            # Common SQLite database name
 *.swp                 # Swap files (e.g., from Vim)
 
 # IDEs and editors
-.idea/                # PyCharm and other JetBrains IDEs
-.vscode/              # VSCode settings
+.idea                # PyCharm and other JetBrains IDEs
+.vscode              # VSCode settings
 *.sublime-*           # Sublime Text files
