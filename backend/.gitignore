@@ -5,6 +5,8 @@ __pycache__/          # Bytecode cache directories
 
 # Environment and configuration files
 /venv                 # Virtual environment folder (Python)
+venv                 # Virtual environment folder (Python)
+venv/                 # Virtual environment folder (Python)
 .env                  # Environment variables file
 *.env                 # Other environment variable files
 .DS_Store             # macOS system file, ignore if on macOS
