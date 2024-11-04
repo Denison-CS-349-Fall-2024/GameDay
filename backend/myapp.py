@@ -36,6 +36,16 @@ def home():
 # Login endpoint
 @app.route('/api/login', methods=['POST'])
 def login():
+    if request.method == 'OPTIONS':
+        # Respond to the CORS preflight request with the appropriate headers
+        response = jsonify({'status': 'OK'})
+        response.headers.add("Access-Control-Allow-Origin", "http://localhost:3000")
+        response.headers.add("Access-Control-Allow-Headers", "Content-Type, Authorization")
+        response.headers.add("Access-Control-Allow-Methods", "POST, OPTIONS")
+        print("OPTIONS request received for CORS preflight check")
+        return response
+    
+    print("POST request received")
     data = request.get_json()
     username = data.get("username")
     password = data.get("password")
