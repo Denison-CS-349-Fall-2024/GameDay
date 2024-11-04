@@ -1,13 +1,109 @@
 /* src/components/notifications/notifications.css */
 
 .notifications-container {
-    padding: 20px;
-    max-width: 600px;
-    margin: 0 auto;
-    text-align: center;
-  }
-  
-  .notifications-container h2 {
-    color: #007bff;
-  }
-  
+  padding: 20px;
+  max-width: 1000px;
+  margin: 0 auto;
+  text-align: center;
+  background-color: #f0f4ff; /* Light background color */
+  border-radius: 8px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+.notifications-container h2 {
+  color: #007bff;
+}
+
+.chat-log-container {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 20px;
+}
+
+.chat-window {
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  padding: 10px;
+  height: 300px;
+  overflow-y: auto;
+  flex: 1;
+  background-color: #ffffff; /* White background for chat window */
+  margin-right: 10px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.message {
+  background-color: #e1f7d5;
+  border-radius: 5px;
+  padding: 10px;
+  margin: 5px 0;
+  text-align: left;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.2);
+}
+
+.notification-log {
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  padding: 10px;
+  background-color: #ffffff; /* White background for notification log */
+  height: 300px;
+  overflow-y: auto;
+  flex: 1;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.notification-log h3 {
+  color: #007bff;
+  margin-bottom: 10px;
+}
+
+.log-message {
+  background-color: #e1e1e1;
+  border-radius: 5px;
+  padding: 5px;
+  margin: 5px 0;
+  text-align: left;
+}
+
+.input-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.message-input {
+  flex: 1;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  margin-right: 10px;
+  transition: border-color 0.3s;
+}
+
+.message-input:focus {
+  border-color: #007bff; /* Highlight border on focus */
+}
+
+.send-button {
+  background-color: #007bff;
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.send-button:hover {
+  background-color: #0056b3;
+}
+
+.footer {
+  margin-top: 20px;
+  color: #555; /* Slightly lighter text color for footer */
+}
+
+.footer p {
+  font-size: 14px;
+  margin: 5px 0;
+}
