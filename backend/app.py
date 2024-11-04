@@ -37,7 +37,7 @@ def register():
         session.close()
 
 # Login Endpoint
-@app.route('/login', methods=['POST'])
+@app.route('/api/login', methods=['POST'])
 def login():
     email = request.json.get('email')
     password = request.json.get('password')
