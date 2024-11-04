@@ -1,5 +1,6 @@
 # app.py
 from flask import Flask, request, jsonify
+from flask_cors import CORS
 from sqlalchemy.orm import sessionmaker
 from models import Commissioner
 from db_config import SessionLocal, bcrypt
