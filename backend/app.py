@@ -39,6 +39,9 @@ def register():
 # Login Endpoint
 @app.route('/api/login', methods=['POST','OPTIONS'])
 def login():
+    if request.method == 'OPTIONS':
+        return jsonify({'status': 'OK'}), 200
+    
     email = request.json.get('email')
     password = request.json.get('password')
 

@@ -50,8 +50,11 @@ def login():
     return jsonify({"message": "Invalid username or password", "status": "failure"}), 401
 
 # Signup endpoint
-@app.route('/api/signup', methods=['POST'])
+@app.route('/api/signup', methods=['POST', 'OPTIONS'])
 def signup():
+    if request.method == 'OPTIONS':
+        return jsonify({'status': 'OK'}), 200
+
     data = request.get_json()
     username = data.get("username")
     password = data.get("password")
