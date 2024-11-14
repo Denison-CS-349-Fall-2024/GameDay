@@ -9,21 +9,23 @@ import DashboardPage from './pages/dashboard/Dashboard';
 import HomeScreen from './components/home/home';
 import Notifications from './components/notifications/notifications';
 import Standings from './components/standings/standings'; // Import Standings component
+import { ScheduleProvider } from './components/scheduleContext/scheduleContext';
 
 const App = () => {
   return (
-    <Router>
-      <Routes>
-        {/* <Route path="/" element={<Navigate to="/home" replace />} /> */}
-        <Route path="/login" element={<Login />} />
-        <Route path="/signup" element={<SignUpPage />} />
-        <Route path="/forgot-password" element={<ForgotPasswordPage />} />
-        <Route path="/dashboard" element={<DashboardPage />} />
-        <Route path="/" element={<HomeScreen />} />
-        <Route path="/notifications" element={<Notifications />} />
-        <Route path="/standings" element={<Standings />} /> {/* Lowercase route for Standings */}
-      </Routes>
-    </Router>
+    <ScheduleProvider> {/* Wrap the whole app with ScheduleProvider */}
+      <Router>
+        <Routes>
+          <Route path="/login" element={<Login />} />
+          <Route path="/signup" element={<SignUpPage />} />
+          <Route path="/forgot-password" element={<ForgotPasswordPage />} />
+          <Route path="/dashboard" element={<DashboardPage />} />
+          <Route path="/" element={<HomeScreen />} />
+          <Route path="/notifications" element={<Notifications />} />
+          <Route path="/standings" element={<Standings />} />
+        </Routes>
+      </Router>
+    </ScheduleProvider>
   );
 };
 

@@ -20,10 +20,11 @@ const SignUpComponent = () => {
       alert('Passwords do not match.');
       return;
     }
-
+    // const backend_host = "http://54.198.164.179:5000"
+    const backend_host = "http://127.0.0.1:5000"
     // Send request to backend to check username info, if okay then store new information
     try {
-      const response = await fetch('http:/54.198.164.179:5000/api/signup', {
+      const response = await fetch(backend_host + '/api/signup', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ username, password }),

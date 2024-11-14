@@ -165,10 +165,11 @@ def assign_matches_to_gyms(league_schedules):
     return gym_schedules
 
 gym_schedules = assign_matches_to_gyms(league_schedules)
+# print(gym_schedules)
 
 # Write the gym schedules to a CSV file
-def write_gym_schedules_to_csv(gym_schedules):
-    with open('gym_calendar_schedule.csv', mode='w', newline='', encoding='utf-8') as csvfile:
+def write_gym_schedules_to_csv(gym_schedules, path):
+    with open(path + 'gym_calendar_schedule.csv', mode='w', newline='', encoding='utf-8') as csvfile:
         fieldnames = ['Gym', 'Week', 'Matches']
         writer = csv.DictWriter(csvfile, fieldnames=fieldnames)
         writer.writeheader()
@@ -193,7 +194,7 @@ def write_gym_schedules_to_csv(gym_schedules):
                     })
     print("Gym calendar schedule has been written to 'gym_calendar_schedule.csv'")
 
-write_gym_schedules_to_csv(gym_schedules)
+write_gym_schedules_to_csv(gym_schedules, "data/")
 
 # Count games per team across leagues
 def count_games_per_team(teams):
@@ -228,12 +229,12 @@ def write_game_counts_to_csv(game_counts):
                 })
     print("Team game counts have been written to 'team_game_counts_all_leagues.csv'")
 
-write_game_counts_to_csv(game_counts)
+# write_game_counts_to_csv(game_counts)
 
 # Output the number of games each team is playing
-print("\nNumber of games each team is playing:")
-for league in game_counts:
-    print(f"\n{league}:")
-    for team_name in game_counts[league]:
-        counts = game_counts[league][team_name]
-        print(f"{team_name}: {counts['TotalGames']} games (Home: {counts['HomeGames']}, Away: {counts['AwayGames']})")
+# print("\nNumber of games each team is playing:")
+# for league in game_counts:
+#     print(f"\n{league}:")
+#     for team_name in game_counts[league]:
+#         counts = game_counts[league][team_name]
+#         print(f"{team_name}: {counts['TotalGames']} games (Home: {counts['HomeGames']}, Away: {counts['AwayGames']})")
