@@ -73,3 +73,83 @@
     background-color: #444;
   }
   
+.modal-content {
+  padding: 20px;
+  border-radius: 10px;
+  max-width: 600px;
+  margin: auto;
+}
+
+.modal-header {
+  border-bottom: 1px solid #e9ecef;
+}
+
+.modal-footer {
+  border-top: 1px solid #e9ecef;
+  display: flex;
+  justify-content: space-between;
+}
+
+button {
+  margin: 0 5px;
+}
+
+.form-control {
+  width: 100%;
+}
+
+.modal-title-container {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+}
+
+.me-auto {
+  margin-right: auto; /* Pushes the title to the left */
+}
+
+/* Add spacing between the gym location buttons and the calendar content */
+.gym-tabs {
+  display: flex;
+  gap: 10px; /* Add space between buttons */
+  margin-bottom: 20px; /* Add space below the buttons */
+}
+
+/* Style for the active (selected) gym button */
+.gym-tab.active {
+  background-color: #4A90E2; /* Change to a distinct color for the selected gym */
+  color: white; /* Ensure the text is readable */
+  font-weight: bold; /* Make the text bold to stand out */
+  border: none;
+  outline: none;
+}
+
+/* Style for all gym buttons */
+.gym-tab {
+  padding: 10px 15px;
+  border-radius: 5px;
+  border: 1px solid #ccc;
+  background-color: #e0e0e0; /* Default background color */
+  color: #333;
+  cursor: pointer;
+  transition: background-color 0.3s, color 0.3s;
+}
+
+/* Hover effect for gym buttons */
+.gym-tab:hover {
+  background-color: #b0c4de; /* Light blue hover effect */
+}
+
+.calendar-wrapper {
+  margin-bottom: 20px; /* Add space below the calendar */
+}
+
+/* Add more margin to push the form down */
+.modal-form-container {
+  margin-top: 30px; /* Increase the space above the form */
+}
+
+/* Additional styling for the modal content, if needed */
+.edit-event-modal {
+  padding-top: 10px; /* Add some padding to the top of the modal */
+}

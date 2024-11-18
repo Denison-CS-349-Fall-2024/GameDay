@@ -1,11 +1,15 @@
 import React, { useState, useContext, useEffect } from 'react';
 import { Calendar, momentLocalizer } from 'react-big-calendar';
-import { Modal, Button, Form } from 'react-bootstrap';
 import moment from 'moment';
 import { ScheduleContext } from '../scheduleContext/scheduleContext';
 import './schedule.css'; // Add your custom styling
+import EditEventModal from './editEventModal'
+import { DndProvider } from 'react-dnd';
+import { HTML5Backend } from 'react-dnd-html5-backend';
+import withDragAndDrop from 'react-big-calendar/lib/addons/dragAndDrop';
 
 const localizer = momentLocalizer(moment);
+const DraggableCalendar = withDragAndDrop(Calendar); // Wrap the Calendar with withDragAndDrop
 
 const gyms = [
   'Watkins Memorial',
@@ -23,7 +27,7 @@ const SchedulePage = ({ readOnly }) => {
     const [modalEvent, setModalEvent] = useState({ title: '', start: new Date(), end: new Date() });
     const [isEditing, setIsEditing] = useState(false);
     const [filteredEvents, setFilteredEvents] = useState([]);
-    
+   
     // Log the schedule to verify updates
     useEffect(() => {
         console.log('Schedule in SchedulePage:', schedule); // Log schedule updates for debugging
@@ -74,10 +78,6 @@ const SchedulePage = ({ readOnly }) => {
             setSchedule(updatedSchedule);
             saveScheduleToBackend(updatedSchedule);
         } else {
-            // Calculate the "Week" based on the date of the event
-            // const eventDate = new Date(modalEvent.start);
-            // const weekNumber = Math.ceil((eventDate.getDate() - eventDate.getDay() + 1) / 7); // Calculate the week number
-            // const week = `Week ${weekNumber}`;
             // Add a new event
             const newEvent = {
                 ...modalEvent,
@@ -96,12 +96,45 @@ const SchedulePage = ({ readOnly }) => {
 
     // Function to delete a specific event
     const handleDeleteEvent = (event) => {
-        if (readOnly) return; // Prevent form submission if read-only
-        const updatedSchedule = schedule.filter(e => 
-        !(e.Date === event.Date && e.Time === event.Time && e.Gym === event.Gym && e.Matches === event.Matches)
-        );
-        setSchedule(updatedSchedule);
-        saveScheduleToBackend(updatedSchedule);
+        if (readOnly) return; // Prevent deletion if read-only
+    
+        // Show confirmation prompt
+        const isConfirmed = window.confirm("Are you sure you want to delete this event?");
+        
+        if (isConfirmed) {
+            // Proceed with deletion if the user confirms
+            const updatedSchedule = schedule.filter(e => 
+                !(e.Date === event.Date && e.Time === event.Time && e.Gym === event.Gym && e.Matches === event.Matches)
+            );
+            setSchedule(updatedSchedule);
+            saveScheduleToBackend(updatedSchedule);
+            setShowModal(false); // Close the edit modal
+        }
+    };
+
+    // Function to handle event drop
+    const handleEventDrop = ({ event, start, end }) => {
+        // Close the modal when a drag event is initiated
+        if (showModal) {
+            setShowModal(false); // Close the edit modal
+        }
+        // Update the specific event with the new start and end times
+        const updatedSchedule = schedule.map(e => {
+          if (e.Date === event.Date && e.Time === event.Time && e.Gym === event.Gym && e.Matches === event.Matches) {
+            // Update start and end as Date objects
+            return {
+              ...e,
+              Date: start.toISOString().split('T')[0], // Update Date
+              Time: `${moment(start).format('HH:mm')}-${moment(end).format('HH:mm')}`, // Update Time
+              start, // Update the start time
+              end,   // Update the end time
+            };
+          }
+          return e;
+        });
+      
+        setSchedule(updatedSchedule); // Update the state
+        saveScheduleToBackend(updatedSchedule); // Save the updated schedule to the backend
     };
 
     const backend_host = "http://127.0.0.1:5000";
@@ -132,7 +165,7 @@ const SchedulePage = ({ readOnly }) => {
           if (!response.ok) {
             alert('Failed to save schedule to the backend.');
           } else {
-            alert('Schedule saved successfully!');
+            // alert('Schedule saved successfully!');
           }
         } catch (error) {
           console.error('Error saving schedule:', error);
@@ -140,83 +173,86 @@ const SchedulePage = ({ readOnly }) => {
         }
     };
 
+    // Function to convert the schedule data to CSV and download it
+    const exportScheduleToCSV = () => {
+        const headers = ["Gym", "Week", "Matches", "Date", "Time"];
+      
+        const csvRows = [
+          headers.join(","), // Add headers
+          ...schedule.map(event => {
+            // Convert the start and end times to the correct Date and Time format
+            const startDate = moment(event.start).format('YYYY-MM-DD');
+            const startTime = moment(event.start).format('HH:mm');
+            const endTime = moment(event.end).format('HH:mm');
+            const timeSlot = `${startTime}-${endTime}`;
+      
+            return [event.Gym, event.Week, event.Matches, startDate, timeSlot].join(",");
+          })
+        ];
+      
+        const csvContent = "data:text/csv;charset=utf-8," + csvRows.join("\n");
+        const encodedUri = encodeURI(csvContent);
+        const link = document.createElement("a");
+        link.setAttribute("href", encodedUri);
+        link.setAttribute("download", "schedule.csv");
+        document.body.appendChild(link);
+        link.click();
+        document.body.removeChild(link);
+    };
+
     return (
-        <div className="calendar-wrapper">
-            <h2 className="calendar-title">Team Schedule</h2>
-            <div className="gym-tabs">
-                {gyms.map(gym => (
-                <button
-                    key={gym}
-                    className={`gym-tab ${selectedGym === gym ? 'active' : ''}`}
-                    onClick={() => setSelectedGym(gym)}
-                >
-                    {gym}
-                </button>
-                ))}
-            </div>
-            <div style={{ height: '80vh' }}>
-                <Calendar
-                localizer={localizer}
-                events={filteredEvents}
-                startAccessor="start"
-                endAccessor="end"
-                style={{ height: 500 }}
-                selectable={!readOnly} // Disable selection if read-only
-                onSelectEvent={event => !readOnly && openModal(event, true)} // Edit event when selected
-                onSelectSlot={({ start, end }) => !readOnly && openModal({ title: '', start, end }, false)} // Add event on slot select
-                />
-                <div className="export-button">
-                    <button>Export Schedule</button>
+        <DndProvider backend={HTML5Backend}>
+            <div className="calendar-wrapper">
+                <h2 className="calendar-title">Team Schedule</h2>
+                <div className="gym-tabs">
+                    {gyms.map(gym => (
+                    <button
+                        key={gym}
+                        className={`gym-tab ${selectedGym === gym ? 'active' : ''}`}
+                        onClick={() => {
+                            setSelectedGym(gym);
+                            setShowModal(false);
+                        }}
+                    >
+                        {gym}
+                    </button>
+                    ))}
                 </div>
+                <div style={{ height: '80vh' }}>
+                    <DraggableCalendar
+                    localizer={localizer}
+                    events={filteredEvents}
+                    startAccessor="start"
+                    endAccessor="end"
+                    style={{ height: 500 }}
+                    selectable={!readOnly} // Disable selection if read-only
+                    onSelectEvent={event => !readOnly && openModal(event, true)} // Edit event when selected
+                    onSelectSlot={({ start, end }) => !readOnly && openModal({ title: '', start, end }, false)} // Add event on slot select
+                    onEventDrop={handleEventDrop} // Handle event drop
+                    draggableAccessor={() => !readOnly} // Make events draggable
+                    />
+                    <div className="export-button">
+                        <button 
+                            onClick={() => {
+                                exportScheduleToCSV();
+                                setShowModal(false); // Close the modal
+                            }}
+                        >  
+                            Export Schedule
+                        </button>
+                    </div>
+                </div>
+                    <EditEventModal
+                        showModal={showModal}
+                        setShowModal={setShowModal}
+                        modalEvent={modalEvent}
+                        setModalEvent={setModalEvent}
+                        handleFormSubmit={handleFormSubmit}
+                        handleDeleteEvent={handleDeleteEvent}
+                        isEditing={isEditing}
+                    />
             </div>
-                {/* Modal for Adding/Editing Events */}
-                <Modal show={showModal} onHide={() => setShowModal(false)}>
-                <Modal.Header closeButton>
-                <Modal.Title>{isEditing ? 'Edit Event' : 'Add Event'}</Modal.Title>
-                </Modal.Header>
-                <Modal.Body>
-                <Form>
-                    <Form.Group controlId="formEventTitle">
-                    <Form.Label>Event Title</Form.Label>
-                    <Form.Control
-                        type="text"
-                        value={modalEvent.title}
-                        onChange={(e) => setModalEvent({ ...modalEvent, title: e.target.value })}
-                    />
-                    </Form.Group>
-                    <Form.Group controlId="formEventStart">
-                    <Form.Label>Start Time</Form.Label>
-                    <Form.Control
-                        type="datetime-local"
-                        value={moment(modalEvent.start).format('YYYY-MM-DDTHH:mm')}
-                        onChange={(e) => setModalEvent({ ...modalEvent, start: new Date(e.target.value) })}
-                    />
-                    </Form.Group>
-                    <Form.Group controlId="formEventEnd">
-                    <Form.Label>End Time</Form.Label>
-                    <Form.Control
-                        type="datetime-local"
-                        value={moment(modalEvent.end).format('YYYY-MM-DDTHH:mm')}
-                        onChange={(e) => setModalEvent({ ...modalEvent, end: new Date(e.target.value) })}
-                    />
-                    </Form.Group>
-                </Form>
-                </Modal.Body>
-                <Modal.Footer>
-                {isEditing && (
-                    <Button variant="danger" onClick={() => handleDeleteEvent(modalEvent)}>
-                    Delete
-                    </Button>
-                )}
-                <Button variant="secondary" onClick={() => setShowModal(false)}>
-                    Cancel
-                </Button>
-                <Button variant="primary" onClick={handleFormSubmit}>
-                    Save
-                </Button>
-                </Modal.Footer>
-            </Modal>
-        </div>
+        </DndProvider>
     );
 };
 
