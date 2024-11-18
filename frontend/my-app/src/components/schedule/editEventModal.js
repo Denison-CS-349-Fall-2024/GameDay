@@ -7,22 +7,7 @@ const EditEventModal = ({ showModal, setShowModal, modalEvent, setModalEvent, ha
   const handleClose = () => setShowModal(false);
 
   return (
-    <Modal show={showModal} onHide={handleClose} centered>
-      {/* <Modal.Header closeButton>
-        <div className="modal-title-container d-flex align-items-center w-100">
-          <Modal.Title className="me-auto">{isEditing ? 'Edit Event' : 'Add Event'}</Modal.Title>
-          <div
-            className="color-box"
-            style={{
-              backgroundColor: '#5B9BD5',
-              width: '20px',
-              height: '20px',
-              borderRadius: '4px',
-              marginLeft: '10px',
-            }}
-          ></div>
-        </div>
-      </Modal.Header> */}
+    <Modal show={showModal} onHide={handleClose} centered dialogClassName="custom-modal">
       <Modal.Body className="modal-form-container">
         <Form>
           <div className="d-flex align-items-center mb-3">

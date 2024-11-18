@@ -241,16 +241,23 @@ const SchedulePage = ({ readOnly }) => {
                             Export Schedule
                         </button>
                     </div>
-                </div>
-                    <EditEventModal
-                        showModal={showModal}
-                        setShowModal={setShowModal}
-                        modalEvent={modalEvent}
-                        setModalEvent={setModalEvent}
-                        handleFormSubmit={handleFormSubmit}
-                        handleDeleteEvent={handleDeleteEvent}
-                        isEditing={isEditing}
-                    />
+                </div >
+                {showModal && (
+                    <>
+                        <div className="overlay" onClick={() => setShowModal(false)}></div> {/* Dark overlay */}
+                        <div className="modal-wrapper">
+                            <EditEventModal
+                            showModal={showModal}
+                            setShowModal={setShowModal}
+                            modalEvent={modalEvent}
+                            setModalEvent={setModalEvent}
+                            handleFormSubmit={handleFormSubmit}
+                            handleDeleteEvent={handleDeleteEvent}
+                            isEditing={isEditing}
+                            />
+                        </div>
+                    </>
+                )}
             </div>
         </DndProvider>
     );
