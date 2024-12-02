@@ -4,11 +4,10 @@
     justify-content: center;
     align-items: center;
     height: 100vh;
-    background-color: #f8f9fa; /* Light background for Sign Up page */
+    background-color: #ffffff; /* Light background for Sign Up page */
     background-image: url('/public/assets/vb.jpg'); /* Optional background image */
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
-    filter: grayscale(100%) opacity(0.7); /* Optional style */
   }
   

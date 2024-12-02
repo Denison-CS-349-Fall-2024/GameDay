@@ -84,30 +84,48 @@ const Standings = () => {
   ];
 
   return (
-    <div className="standings-container">
-      <h2>Standings</h2>
-      <table className="standings-table">
-        <thead>
-          <tr>
-            <th>School</th>
-            <th>Category</th>
-            <th>Team Color</th>
-            <th>Wins</th>
-            <th>Losses</th>
-          </tr>
-        </thead>
-        <tbody>
-          {teams.map((team, index) => (
-            <tr key={index}>
-              <td>{team.school}</td>
-              <td>{team.category}</td>
-              <td>{team.color}</td>
-              <td>{team.wins}</td>
-              <td>{team.losses}</td>
+    <div>
+      {/* Header */}
+      <div className="top-header">
+        <h1>GameDay</h1>
+        <div className="top-buttons">
+          <button className="header-button">Login</button>
+          <button className="header-button">Sign Up</button>
+        </div>
+      </div>
+
+      {/* Standings Content */}
+      <div className="standings-container">
+        <h2>Standings</h2>
+        <table className="standings-table">
+          <thead>
+            <tr>
+              <th>School</th>
+              <th>Category</th>
+              <th>Team Color</th>
+              <th>Wins</th>
+              <th>Losses</th>
             </tr>
-          ))}
-        </tbody>
-      </table>
+          </thead>
+          <tbody>
+            {teams.map((team, index) => (
+              <tr key={index}>
+                <td>{team.school}</td>
+                <td>{team.category}</td>
+                <td>{team.color}</td>
+                <td>{team.wins}</td>
+                <td>{team.losses}</td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
+      </div>
+
+      {/* Footer */}
+      <div className="footer">
+        <button className="footer-button">Contact Us</button>
+        <button className="footer-button">Meet the Team</button>
+      </div>
     </div>
   );
 };
