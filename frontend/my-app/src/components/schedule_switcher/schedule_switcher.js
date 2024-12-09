@@ -1,11 +1,6 @@
 // ScheduleSwitcher.js
 import React, { useState } from 'react';
 import ScheduleCalendar1 from '../schedule1/scheduleCalendar1';
-import ScheduleCalendar2 from '../schedule2/scheduleCalendar2';
-import ScheduleCalendar3 from '../schedule3/scheduleCalendar3';
-import ScheduleCalendar4 from '../schedule4/scheduleCalendar4';
-import ScheduleCalendar5 from '../schedule5/scheduleCalendar5';
-import ScheduleCalendar6 from '../schedule6/scheduleCalendar6';
 
 
 const ScheduleSwitcher = () => {
@@ -15,16 +10,6 @@ const ScheduleSwitcher = () => {
     switch (selectedGym) {
       case 'Watkins Memorial':
         return <ScheduleCalendar1 />;
-      case 'Licking Heights':
-        return <ScheduleCalendar2 />;
-      case 'Lakewood':
-        return <ScheduleCalendar3 />;
-      case 'Utica':
-        return <ScheduleCalendar4 />;
-      case 'Heath':
-        return <ScheduleCalendar5 />;
-      case 'Johnstown':
-        return <ScheduleCalendar6 />;
       default:
         return null;
     }
