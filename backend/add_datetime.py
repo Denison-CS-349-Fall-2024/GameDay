@@ -2,14 +2,15 @@ import csv
 from datetime import datetime, timedelta
 import sys
 
-# Constants for time slots and working days
-TIME_SLOTS = ["9:00-12:00", "14:00-17:00", "18:00-21:00"]
-DAYS_PER_WEEK = 5  # Monday to Friday
+# Constants for scheduling
+GAME_TIME_START = "17:30"  # Start time (5:30 PM)
+GAME_DURATION = timedelta(minutes=75)  # Duration (1 hour 15 minutes)
+DAYS_PER_WEEK = 4  # Monday to Thursday
 
-# Function to get the nearest weekday if the date falls on a weekend
-def get_nearest_weekday(date):
-    if date.weekday() >= 5:  # If the date is Saturday (5) or Sunday (6)
-        date += timedelta(days=(7 - date.weekday()))
+# Function to get the nearest Monday if the date is a weekend
+def get_nearest_monday(date):
+    while date.weekday() > 3:  # Adjust if the date is not Monday through Thursday
+        date += timedelta(days=1)
     return date
 
 # Function to assign dates and times to each match within each game
@@ -21,10 +22,10 @@ def assign_dates_and_times(games, start_date):
         week_number = game["Week"]
         if week_number not in schedule:
             # Compute the Monday for the current week
-            week_start_date = get_nearest_weekday(start_date + timedelta(weeks=int(week_number.split()[1]) - 1))
+            week_start_date = get_nearest_monday(start_date + timedelta(weeks=int(week_number.split()[1]) - 1))
             schedule[week_number] = {
                 "date": week_start_date,
-                "time_slot_idx": 0
+                "day_idx": 0  # Tracks Monday to Thursday scheduling
             }
     
     # Assign date and time for each match in the games
@@ -36,12 +37,14 @@ def assign_dates_and_times(games, start_date):
         # Split each match into individual entries using '\n'
         match_lines = game["Matches"].split("\n")
         for match in match_lines:
-            # Calculate the day offset and select the time slot
-            day_offset = (week_info["time_slot_idx"] // len(TIME_SLOTS)) % DAYS_PER_WEEK
-            time_slot = TIME_SLOTS[week_info["time_slot_idx"] % len(TIME_SLOTS)]
-            
-            # Calculate the game date
+            # Calculate the day offset (Monday to Thursday)
+            day_offset = week_info["day_idx"] % DAYS_PER_WEEK
             game_date = week_info["date"] + timedelta(days=day_offset)
+            
+            # Format the time slot for the game
+            game_start_time = datetime.strptime(GAME_TIME_START, "%H:%M")
+            game_end_time = (game_start_time + GAME_DURATION).strftime("%H:%M")
+            time_slot = f"{game_start_time.strftime('%H:%M')}-{game_end_time}"
             
             # Create an entry for each match
             all_games.append({
@@ -52,8 +55,8 @@ def assign_dates_and_times(games, start_date):
                 "Time": time_slot
             })
             
-            # Move to the next time slot
-            week_info["time_slot_idx"] += 1
+            # Move to the next day (cycle through Monday to Thursday)
+            week_info["day_idx"] += 1
     
     return all_games
 
