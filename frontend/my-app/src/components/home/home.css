@@ -123,22 +123,3 @@ body, html {
 .footer-button:hover {
   background-color: var(--button-hover-color);
 }
-
-/* Calendar box styling */
-.calendar-box {
-  width: 90%; /* Slightly larger width */
-  max-width: 1000px; /* Maximum width for large screens */
-  background: rgba(255, 255, 255, 0.8); /* White background with slight transparency */
-  border-radius: 10px;
-  padding: 20px;
-  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
-  margin-top: 20px;
-}
-
-.calendar-box h2 {
-  font-size: 1.5em;
-  font-weight: 600;
-  color: var(--primary-color);
-  margin-bottom: 15px;
-  text-align: center;
-}

@@ -101,15 +101,6 @@ main {
   align-self: center; /* Center the button horizontally */
 }
 
-/* Schedule Section */
-.schedule-switcher {
-  margin-top: 20px;
-  background-color: var(--box-grey-bg); /* Grey background for the schedule */
-  padding: 20px;
-  border-radius: 8px;
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
-}
-
 /* Footer */
 .dashboard-footer {
   background-color: #000; /* Black footer */

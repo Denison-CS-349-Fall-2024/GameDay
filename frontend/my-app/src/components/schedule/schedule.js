@@ -218,7 +218,7 @@ const SchedulePage = ({ readOnly }) => {
                     </button>
                     ))}
                 </div>
-                <div style={{ height: '80vh' }}>
+                <div style={{ height: '60vh' }}>
                     <DraggableCalendar
                     localizer={localizer}
                     events={filteredEvents}
