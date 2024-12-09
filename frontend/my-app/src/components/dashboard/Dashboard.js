@@ -11,7 +11,7 @@ const DashboardComponent = () => {
   const [loading, setLoading] = useState(false);
   const navigate = useNavigate(); // Initialize navigate
 
-  const backend_host = 'http://127.0.0.1:5000';
+  const backend_host = 'http://50.19.159.206:5000';
 
   const handleCreateSchedule = async () => {
     setLoading(true);

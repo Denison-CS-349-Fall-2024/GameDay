@@ -21,7 +21,7 @@ const SignUpComponent = () => {
       return;
     }
     // const backend_host = "http://54.198.164.179:5000"
-    const backend_host = "http://127.0.0.1:5000"
+    const backend_host = "http://50.19.159.206:5000"
     // Send request to backend to check username info, if okay then store new information
     try {
       const response = await fetch(backend_host + '/api/signup', {

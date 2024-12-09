@@ -151,7 +151,7 @@ const SchedulePage = ({ readOnly }) => {
     saveScheduleToBackend(updatedSchedule);
   };
 
-  const backend_host = "http://127.0.0.1:5000";
+  const backend_host = "http://50.19.159.206:5000";
   const saveScheduleToBackend = async (updatedSchedule) => {
     const formattedSchedule = updatedSchedule.map((event) => {
       const startString = moment(event.start).format("YYYY-MM-DD HH:mm");

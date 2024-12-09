@@ -10,7 +10,7 @@ const HomeScreen = () => {
   const navigate = useNavigate();
   const { schedule, setSchedule } = useContext(ScheduleContext); // Access setSchedule
   const [hasFetched, setHasFetched] = useState(false); // New state to track if data has been fetched
-  const backend_host = "http://127.0.0.1:5000"; // Update as needed
+  const backend_host = "http://50.19.159.206:5000"; // Update as needed
 
   // Trigger to fetch the schedule when HomeScreen mounts
   useEffect(() => {
