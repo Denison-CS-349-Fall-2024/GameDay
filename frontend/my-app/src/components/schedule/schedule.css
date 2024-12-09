@@ -1,56 +1,83 @@
 /* src/components/schedule/scheduleCalendar.css */
 
-.calendar-wrapper {
-  width: 100%; /* Full width to utilize available space */
-  max-width: 1200px; /* Set a maximum width to ensure it doesn’t become too wide on large screens */
-  padding: 20px;
-  border: 1px solid #ccc;
-  border-radius: 8px;
-  background-color: #a69696ae;
-  box-shadow: 2px 2px 12px rgba(0, 0, 0, 0.1);
-  margin: 0 auto; /* Center the calendar on the page */
-  color: #333; /* Change text color inside the calendar wrapper */
+/* Define CSS variables for consistent color scheme */
+:root {
+  --primary-color: #007bff;
+  --primary-color-dark: #0056b3;
+  --secondary-color: #555;
+  --secondary-color-dark: #333;
+  --background-color: #a69696ae;
+  --border-color: #ccc;
+  --text-color: #333;
+  --text-color-light: #444;
+  --text-color-lighter: #555;
+  --text-color-lightest: #666;
+  --event-bg-color: #888;
+  --event-bg-hover: #555;
+  --today-bg-color: #f0f0f0;
+  --button-bg-color: var(--secondary-color);
+  --button-bg-hover: var(--secondary-color-dark);
+  --button-text-color: white;
 }
 
+/* Calendar Wrapper */
+.calendar-wrapper {
+  width: 100%;
+  max-width: 1200px;
+  padding: 20px;
+  border: 1px solid var(--border-color);
+  border-radius: 8px;
+  background-color: var(--background-color);
+  box-shadow: 2px 2px 12px rgba(0, 0, 0, 0.1);
+  margin: 0 auto;
+  color: var(--text-color);
+}
+
+/* Calendar Title */
 .calendar-title {
   margin-bottom: 15px;
-  font-size: 1.8rem; /* Increase font size for better visibility */
+  font-size: 1.8rem;
   font-weight: bold;
   text-align: center;
-  color: #000000; /* Change text color of the calendar title */
+  color: var(--text-color-light);
 }
 
+/* Calendar */
 .rbc-calendar {
   border-radius: 8px;
-  width: 100%; /* Make the calendar take full width of the wrapper */
-  height: 70vh; /* Set a fixed height to control vertical space */
+  width: 100%;
+  height: 70vh;
   box-shadow: none;
-  color: #555; /* Change text color inside the calendar */
+  color: var(--text-color-lighter);
 }
 
+/* Toolbar */
 .rbc-toolbar {
   display: flex;
   justify-content: space-between;
   margin-bottom: 10px;
   padding: 0 10px;
-  color: #000000; /* Change text color of the toolbar */
+  color: var(--text-color-lightest);
 }
 
+/* Event */
 .rbc-event {
-  background-color: #888; /* Grey background color for calendar events */
-  color: black; /* Change text color of the events */
-  border-radius: 8px; /* Make event boxes rounder */
+  background-color: var(--event-bg-color);
+  color: black;
+  border-radius: 8px;
   padding: 5px;
 }
 
 .rbc-event:hover {
-  background-color: #555; /* Darker grey on hover */
+  background-color: var(--event-bg-hover);
 }
 
+/* Today */
 .rbc-today {
-  background-color: #f0f0f0; /* Light grey for the current day */
+  background-color: var(--today-bg-color);
 }
 
+/* Export Button */
 .export-button {
   display: flex;
   justify-content: flex-end;
@@ -60,46 +87,48 @@
 
 .export-button button {
   padding: 12px 24px;
-  background-color: #555; /* Grey background for export button */
-  color: white; /* White text color for export button */
+  background-color: var(--button-bg-color);
+  color: var(--button-text-color);
   border: none;
   border-radius: 4px;
   cursor: pointer;
+  transition: background-color 0.3s ease;
 }
 
 .export-button button:hover {
-  background-color: #333; /* Darker grey on hover */
+  background-color: var(--button-bg-hover);
 }
 
-/* Gym Tabs Styling */
+/* Gym Tabs */
 .gym-tabs {
-  display: flex; /* Use flexbox to align and center the tabs */
-  justify-content: center; /* Center the buttons horizontally */
-  gap: 10px; /* Add spacing between the buttons */
-  margin-bottom: 20px; /* Add some spacing below the tabs */
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+  margin-bottom: 20px;
 }
 
 .gym-tab {
-  padding: 10px 20px; /* Adjust the padding for a better button size */
-  background-color: #007bff; /* Primary blue background */
-  color: white; /* White text color */
-  border: none; /* Remove borders */
-  border-radius: 4px; /* Add rounded corners */
-  cursor: pointer; /* Add pointer cursor for better UX */
-  font-size: 1rem; /* Adjust font size for consistency */
-  font-weight: bold; /* Make the text bold */
-  transition: background-color 0.3s ease; /* Add a smooth hover effect */
+  padding: 10px 20px;
+  background-color: var(--primary-color);
+  color: var(--button-text-color);
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 1rem;
+  font-weight: bold;
+  transition: background-color 0.3s ease;
 }
 
 .gym-tab:hover {
-  background-color: #0056b3; /* Darker blue for hover effect */
+  background-color: var(--primary-color-dark);
 }
 
 .gym-tab.active {
-  background-color: #0056b3; /* Keep the active tab with a darker color */
-  color: #ffffff; /* Ensure text remains readable */
+  background-color: var(--primary-color-dark);
+  color: var(--button-text-color);
 }
 
+/* School Item */
 .school-item {
-  margin-bottom: 10px; /* Adjust the spacing as needed */
+  margin-bottom: 10px;
 }
