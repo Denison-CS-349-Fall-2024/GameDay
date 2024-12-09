@@ -17,7 +17,7 @@
   font-size: 1.8rem; /* Increase font size for better visibility */
   font-weight: bold;
   text-align: center;
-  color: #444; /* Change text color of the calendar title */
+  color: #000000; /* Change text color of the calendar title */
 }
 
 .rbc-calendar {
@@ -33,7 +33,7 @@
   justify-content: space-between;
   margin-bottom: 10px;
   padding: 0 10px;
-  color: #666; /* Change text color of the toolbar */
+  color: #000000; /* Change text color of the toolbar */
 }
 
 .rbc-event {
