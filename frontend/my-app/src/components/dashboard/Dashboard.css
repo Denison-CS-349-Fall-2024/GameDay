@@ -4,6 +4,8 @@
   --text-white: #fff; /* White text */
   --button-grey: #666; /* Grey buttons */
   --button-hover-grey: #777; /* Lighter grey for button hover */
+  --box-border-radius: 8px; /* Consistent border radius for boxes */
+  --box-padding: 20px; /* Consistent padding for boxes */
 }
 
 body, html {
@@ -66,33 +68,55 @@ main {
   background-color: var(--dark-grey-bg); /* Matches the entire background */
 }
 
+/* Section Header Styling */
+section {
+  text-align: center; /* Centers text horizontally */
+  margin: 0 auto; /* Centers the section container */
+  padding: 20px 0; /* Add vertical padding */
+}
+
+section h2 {
+  color: var(--text-white); /* Ensure text is white */
+  margin-bottom: 15px;
+}
+
+section p {
+  color: var(--text-white); /* Ensure text is white */
+  margin: 5px 0; /* Add margin around the paragraph */
+}
+
 /* Section Boxes */
 .dashboard-components {
   display: flex;
-  justify-content: space-between;
-  gap: 20px;
+  justify-content: center; /* Centers the components horizontally */
+  gap: 20px; /* Reduce gap between boxes */
+  flex-wrap: wrap; /* Allow wrapping on smaller screens */
 }
 
 .dashboard-components > div {
-  background-color: var(--box-grey-bg); /* Set grey background for smaller boxes */
-  color: var(--text-white); /* Ensure text is visible */
-  padding: 20px;
-  border-radius: 8px;
+  background-color: var(--text-white); /* White background for the boxes */
+  color: black; /* Black text color for the content */
+  padding: var(--box-padding);
+  border-radius: var(--box-border-radius);
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
   flex: 1;
+  max-width: 500px; /* Wider boxes */
   display: flex;
   flex-direction: column;
   justify-content: space-between;
   box-sizing: border-box;
+  min-height: 300px; /* Ensure consistent height */
 }
 
-.dashboard-components > div h2 {
-  color: var(--text-white);
+.dashboard-components > div h3 {
+  color: black; /* Black header text */
   margin-top: 0;
+  font-size: 1.25em; /* Slightly larger header */
+  text-align: left; /* Align to the left for readability */
 }
 
 .dashboard-components > div p {
-  color: var(--text-white); /* White color for text */
+  color: black; /* Black text for the paragraph */
   margin: 10px 0;
   line-height: 1.5; /* Improve readability */
 }
@@ -101,16 +125,7 @@ main {
   align-self: center; /* Center the button horizontally */
 }
 
-/* Footer */
-.dashboard-footer {
-  background-color: #000; /* Black footer */
-  padding: 10px;
-  display: flex;
-  justify-content: center;
-  gap: 20px;
-  color: var(--text-white);
-}
-
+/* Button Styling */
 .footer-button {
   background-color: var(--button-grey);
   color: var(--text-white);
@@ -125,3 +140,17 @@ main {
 .footer-button:hover {
   background-color: var(--button-hover-grey);
 }
+
+/* Footer */
+.dashboard-footer {
+  background-color: #000; /* Black footer */
+  padding: 10px;
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+  color: var(--text-white);
+}
+
+
+
+

@@ -1,15 +1,15 @@
 import React, { useContext, useState, useEffect } from 'react';
-import NotiPreview from '../notification_preview/noti_preview'; // Updated to PascalCase
-import StandingPreview from '../standings_preview/standings_preview'; // Updated to PascalCase
-import ScheduleSwitcher from '../schedule_switcher/schedule_switcher';
+import { useNavigate } from 'react-router-dom'; // Import useNavigate
+import NotiPreview from '../notification_preview/noti_preview';
+import StandingPreview from '../standings_preview/standings_preview';
 import SchedulePage from '../schedule/schedule';
 import { ScheduleContext } from '../scheduleContext/scheduleContext';
-
 import './Dashboard.css';
 
 const DashboardComponent = () => {
   const { schedule, setSchedule } = useContext(ScheduleContext);
   const [loading, setLoading] = useState(false);
+  const navigate = useNavigate(); // Initialize navigate
 
   const backend_host = 'http://127.0.0.1:5000';
 
@@ -35,6 +35,11 @@ const DashboardComponent = () => {
     }
   };
 
+  const handleLogout = () => {
+    // Any logout-related logic (e.g., clearing tokens) can go here
+    navigate('/'); // Redirect to the homepage
+  };
+
   useEffect(() => {
     const fetchSchedule = async () => {
       try {
@@ -52,32 +57,21 @@ const DashboardComponent = () => {
 
   return (
     <div className="dashboard">
-      {/* Header */}
       <header className="dashboard-header">
         <h1>Commissioner Dashboard</h1>
         <nav>
           <ul>
             <li onClick={handleCreateSchedule}>{loading ? 'Creating...' : 'Create Schedule'}</li>
             <li>Input Schedule</li>
-            <li>Logout</li>
+            <li onClick={handleLogout}>Logout</li>
           </ul>
         </nav>
       </header>
 
-      {/* Main Content */}
       <main>
         <section>
           <h2>Welcome, Commissioner!</h2>
           <p>Here, you can input and view schedule data.</p>
-        </section>
-
-        <section className="dashboard-components">
-          <div>
-            <NotiPreview />
-          </div>
-          <div>
-            <StandingPreview />
-          </div>
         </section>
 
         <div className="schedule-switcher">
@@ -85,7 +79,6 @@ const DashboardComponent = () => {
         </div>
       </main>
 
-      {/* Footer */}
       <footer className="dashboard-footer">
         <button className="footer-button">Contact Us</button>
         <button className="footer-button">Meet the Team</button>
@@ -95,4 +88,5 @@ const DashboardComponent = () => {
 };
 
 export default DashboardComponent;
+
 
