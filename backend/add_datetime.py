@@ -7,6 +7,7 @@ GAME_TIME_START = "17:30"  # Start time (5:30 PM)
 MINI_SOPH_GAME_DURATION = timedelta(minutes=60)  # 1 hour for Mini and Sophomore games
 SENIOR_GAME_DURATION = timedelta(minutes=75)  # 1 hour 15 minutes for Senior games
 DAYS_PER_WEEK = 4  # Monday to Thursday
+END_OF_DAY_TIME = datetime.strptime("23:59", "%H:%M")  # Latest end time for games
 
 # Function to get the nearest Monday if the date is a weekend
 def get_nearest_monday(date):
@@ -58,6 +59,15 @@ def assign_dates_and_times(games, start_date):
             # Format the start and end time slot for the game
             game_start_time = week_info["current_time"]
             game_end_time = game_start_time + game_duration
+
+            # Check if the game ends after the allowed time and move to the next day if necessary
+            if game_end_time > END_OF_DAY_TIME:
+                week_info["day_idx"] += 1
+                day_offset = week_info["day_idx"] % DAYS_PER_WEEK
+                game_date = week_info["date"] + timedelta(days=day_offset)
+                game_start_time = datetime.strptime(GAME_TIME_START, "%H:%M")
+                game_end_time = game_start_time + game_duration
+
             time_slot = f"{game_start_time.strftime('%H:%M')}-{game_end_time.strftime('%H:%M')}"
 
             # Create an entry for each match
@@ -71,11 +81,6 @@ def assign_dates_and_times(games, start_date):
 
             # Update the current time for the next game
             week_info["current_time"] = game_end_time
-
-            # If the next game exceeds the day's limit, move to the next day
-            if week_info["current_time"] >= datetime.strptime("23:59", "%H:%M"):
-                week_info["day_idx"] += 1
-                week_info["current_time"] = datetime.strptime(GAME_TIME_START, "%H:%M")
 
     return all_games
 
