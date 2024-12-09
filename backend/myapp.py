@@ -1,11 +1,11 @@
-# backend/app.py
 import json
 import os
 from datetime import datetime, timedelta
 import subprocess
 import csv
-from flask import Flask, jsonify, request
+from flask import Flask, jsonify, request, Response
 from flask_cors import CORS
+import time
 
 app = Flask(__name__)
 CORS(app)
@@ -44,16 +44,22 @@ def save_users(users):
 def home():
     return "Hello, World!"
 
+# **Route for sending notifications using SSE**
+@app.route('/notifications')
+def notifications():
+    def generate():
+        while True:
+            time.sleep(5)  # Simulate a notification every 5 seconds
+            yield "data: New notification\n\n"  # Send the notification message
+    
+    return Response(generate(), content_type='text/event-stream')
+
 # Login endpoint
 @app.route('/api/login', methods=['POST'])
 def login():
     if request.method == 'OPTIONS':
         # Respond to the CORS preflight request with the appropriate headers
         response = jsonify({'status': 'OK'})
-        # response.headers.add("Access-Control-Allow-Origin", "http://54.198.164.179:5000")
-        # response.headers.add("Access-Control-Allow-Headers", "Content-Type, Authorization")
-        # response.headers.add("Access-Control-Allow-Methods", "POST, OPTIONS")
-        print("OPTIONS request received for CORS preflight check")
         return response
     
     print("POST request received")
@@ -81,17 +87,12 @@ def signup():
     username = data.get("username")
     password = data.get("password")
 
-    # Load current users from the JSON file
     users = load_users()
 
-    # Check if username already exists
     if username in users:
         return jsonify({"message": "Username already exists", "status": "failure"}), 400
 
-    # If username does not exist, add the new user
     users[username] = {"password": password}
-
-    # Save the updated users dictionary back to the JSON file
     save_users(users)
 
     return jsonify({"message": "Signup successful", "status": "success"}), 201
