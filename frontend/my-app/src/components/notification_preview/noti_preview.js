@@ -7,7 +7,7 @@ const Noti_preview = () => {
   
   const notifications = [
     "New game announced!",
-    "Team mini-black from Watkins Memorial won the last match.",
+    "Team midi-black from Watkins Memorial won the last match.",
     "Maintenance on October 24.",
     "New rules announced.",
     "Commissioner meeting on October 30."

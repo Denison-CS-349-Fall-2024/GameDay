@@ -13,7 +13,7 @@ schools = {
 }
 school_names = list(schools.keys())
 gyms = list(schools.values())
-leagues = ['mini', 'Junior', 'Senior']
+leagues = ['midi', 'Junior', 'Senior']
 teams_per_school_per_league = 4  # Assuming 4 teams per school per league
 weeks = list(range(1, 9))  # Weeks 1 to 8
 
