@@ -1,104 +1,104 @@
 Gym,Week,Matches
 Watkins Memorial,Week 1,"Senior: Johnstown Senior Team3 vs Licking Heights Senior Team3
 Junior: Utica Junior Team4 vs Watkins Memorial Junior Team4
-Midi: Johnstown Midi Team1 vs Watkins Memorial Midi Team3
+mini: Johnstown mini Team1 vs Watkins Memorial mini Team3
 Senior: Heath Senior Team2 vs Watkins Memorial Senior Team3
-Midi: Utica Midi Team3 vs Johnstown Midi Team3
-Midi: Heath Midi Team4 vs Licking Heights Midi Team1"
-Watkins Memorial,Week 2,"Midi: Johnstown Midi Team2 vs Heath Midi Team1
+mini: Utica mini Team3 vs Johnstown mini Team3
+mini: Heath mini Team4 vs Licking Heights mini Team1"
+Watkins Memorial,Week 2,"mini: Johnstown mini Team2 vs Heath mini Team1
 Senior: Heath Senior Team1 vs Licking Heights Senior Team4
 Junior: Watkins Memorial Junior Team2 vs Licking Heights Junior Team4
-Midi: Heath Midi Team3 vs Lakewood Midi Team4
-Midi: Utica Midi Team1 vs Johnstown Midi Team4
-Midi: Utica Midi Team4 vs Lakewood Midi Team2"
+mini: Heath mini Team3 vs Lakewood mini Team4
+mini: Utica mini Team1 vs Johnstown mini Team4
+mini: Utica mini Team4 vs Lakewood mini Team2"
 Watkins Memorial,Week 3,"Junior: Licking Heights Junior Team4 vs Johnstown Junior Team3
-Midi: Licking Heights Midi Team2 vs Watkins Memorial Midi Team3
-Midi: Lakewood Midi Team4 vs Johnstown Midi Team3
-Midi: Watkins Memorial Midi Team1 vs Utica Midi Team2
-Midi: Heath Midi Team1 vs Johnstown Midi Team4
+mini: Licking Heights mini Team2 vs Watkins Memorial mini Team3
+mini: Lakewood mini Team4 vs Johnstown mini Team3
+mini: Watkins Memorial mini Team1 vs Utica mini Team2
+mini: Heath mini Team1 vs Johnstown mini Team4
 Senior: Utica Senior Team2 vs Johnstown Senior Team3"
-Watkins Memorial,Week 4,"Midi: Utica Midi Team2 vs Johnstown Midi Team3
+Watkins Memorial,Week 4,"mini: Utica mini Team2 vs Johnstown mini Team3
 Junior: Licking Heights Junior Team3 vs Utica Junior Team1
-Midi: Heath Midi Team4 vs Watkins Memorial Midi Team4
+mini: Heath mini Team4 vs Watkins Memorial mini Team4
 Junior: Watkins Memorial Junior Team4 vs Heath Junior Team4
 Junior: Heath Junior Team1 vs Utica Junior Team2
 Senior: Heath Senior Team1 vs Utica Senior Team4"
 Watkins Memorial,Week 5,"Senior: Johnstown Senior Team2 vs Lakewood Senior Team2
-Midi: Licking Heights Midi Team1 vs Lakewood Midi Team4
-Midi: Heath Midi Team1 vs Johnstown Midi Team1
+mini: Licking Heights mini Team1 vs Lakewood mini Team4
+mini: Heath mini Team1 vs Johnstown mini Team1
 Junior: Licking Heights Junior Team3 vs Utica Junior Team4
 Senior: Licking Heights Senior Team1 vs Heath Senior Team2
 Junior: Johnstown Junior Team3 vs Heath Junior Team1"
-Watkins Memorial,Week 6,"Midi: Heath Midi Team2 vs Licking Heights Midi Team2
+Watkins Memorial,Week 6,"mini: Heath mini Team2 vs Licking Heights mini Team2
 Senior: Lakewood Senior Team4 vs Licking Heights Senior Team4
 Junior: Utica Junior Team1 vs Lakewood Junior Team4
-Midi: Utica Midi Team2 vs Johnstown Midi Team1
-Midi: Utica Midi Team3 vs Heath Midi Team4
+mini: Utica mini Team2 vs Johnstown mini Team1
+mini: Utica mini Team3 vs Heath mini Team4
 Senior: Utica Senior Team2 vs Lakewood Senior Team2"
 Watkins Memorial,Week 7,"Junior: Heath Junior Team3 vs Johnstown Junior Team1
 Junior: Watkins Memorial Junior Team4 vs Utica Junior Team3
 Senior: Watkins Memorial Senior Team4 vs Johnstown Senior Team3
 Junior: Watkins Memorial Junior Team1 vs Utica Junior Team1
-Midi: Heath Midi Team2 vs Watkins Memorial Midi Team1
+mini: Heath mini Team2 vs Watkins Memorial mini Team1
 Junior: Utica Junior Team2 vs Licking Heights Junior Team2"
-Watkins Memorial,Week 8,"Midi: Licking Heights Midi Team2 vs Utica Midi Team1
+Watkins Memorial,Week 8,"mini: Licking Heights mini Team2 vs Utica mini Team1
 Junior: Johnstown Junior Team2 vs Utica Junior Team1
 Senior: Johnstown Senior Team3 vs Lakewood Senior Team4
-Midi: Watkins Memorial Midi Team4 vs Lakewood Midi Team4
+mini: Watkins Memorial mini Team4 vs Lakewood mini Team4
 Junior: Licking Heights Junior Team1 vs Johnstown Junior Team4
 Senior: Licking Heights Senior Team4 vs Johnstown Senior Team4"
-Licking Heights,Week 1,"Midi: Johnstown Midi Team2 vs Utica Midi Team1
+Licking Heights,Week 1,"mini: Johnstown mini Team2 vs Utica mini Team1
 Junior: Licking Heights Junior Team4 vs Utica Junior Team1
 Junior: Utica Junior Team3 vs Heath Junior Team2
-Midi: Watkins Memorial Midi Team4 vs Lakewood Midi Team3
+mini: Watkins Memorial mini Team4 vs Lakewood mini Team3
 Senior: Lakewood Senior Team1 vs Heath Senior Team4
 Senior: Lakewood Senior Team3 vs Utica Senior Team4"
 Licking Heights,Week 2,"Senior: Heath Senior Team4 vs Watkins Memorial Senior Team1
 Junior: Licking Heights Junior Team2 vs Heath Junior Team1
-Midi: Licking Heights Midi Team1 vs Utica Midi Team2
+mini: Licking Heights mini Team1 vs Utica mini Team2
 Senior: Johnstown Senior Team4 vs Licking Heights Senior Team1
 Junior: Watkins Memorial Junior Team1 vs Johnstown Junior Team4"
-Licking Heights,Week 3,"Midi: Utica Midi Team3 vs Licking Heights Midi Team1
+Licking Heights,Week 3,"mini: Utica mini Team3 vs Licking Heights mini Team1
 Senior: Heath Senior Team1 vs Lakewood Senior Team4
 Senior: Johnstown Senior Team1 vs Heath Senior Team2
 Junior: Johnstown Junior Team1 vs Lakewood Junior Team3
 Senior: Heath Senior Team3 vs Lakewood Senior Team1
-Midi: Licking Heights Midi Team3 vs Johnstown Midi Team2"
+mini: Licking Heights mini Team3 vs Johnstown mini Team2"
 Licking Heights,Week 4,"Senior: Heath Senior Team2 vs Utica Senior Team3
 Senior: Watkins Memorial Senior Team1 vs Utica Senior Team2
 Senior: Lakewood Senior Team1 vs Licking Heights Senior Team2
 Senior: Heath Senior Team3 vs Johnstown Senior Team2
-Midi: Lakewood Midi Team4 vs Licking Heights Midi Team3
-Midi: Johnstown Midi Team1 vs Licking Heights Midi Team1"
-Licking Heights,Week 5,"Midi: Utica Midi Team4 vs Watkins Memorial Midi Team3
+mini: Lakewood mini Team4 vs Licking Heights mini Team3
+mini: Johnstown mini Team1 vs Licking Heights mini Team1"
+Licking Heights,Week 5,"mini: Utica mini Team4 vs Watkins Memorial mini Team3
 Junior: Watkins Memorial Junior Team4 vs Licking Heights Junior Team2
 Senior: Licking Heights Senior Team2 vs Lakewood Senior Team4
 Junior: Utica Junior Team1 vs Johnstown Junior Team1
 Senior: Watkins Memorial Senior Team1 vs Johnstown Senior Team1
-Midi: Johnstown Midi Team4 vs Utica Midi Team2"
+mini: Johnstown mini Team4 vs Utica mini Team2"
 Licking Heights,Week 6,"Senior: Heath Senior Team2 vs Watkins Memorial Senior Team1
 Senior: Utica Senior Team1 vs Licking Heights Senior Team1
 Senior: Utica Senior Team4 vs Licking Heights Senior Team3
-Midi: Heath Midi Team1 vs Watkins Memorial Midi Team4
+mini: Heath mini Team1 vs Watkins Memorial mini Team4
 Junior: Utica Junior Team2 vs Watkins Memorial Junior Team1
 Junior: Utica Junior Team3 vs Johnstown Junior Team4"
 Licking Heights,Week 7,"Senior: Johnstown Senior Team2 vs Lakewood Senior Team3
 Junior: Lakewood Junior Team3 vs Watkins Memorial Junior Team2
 Junior: Licking Heights Junior Team3 vs Lakewood Junior Team2
-Midi: Watkins Memorial Midi Team2 vs Licking Heights Midi Team1
+mini: Watkins Memorial mini Team2 vs Licking Heights mini Team1
 Senior: Licking Heights Senior Team2 vs Johnstown Senior Team1"
 Licking Heights,Week 8,"Senior: Utica Senior Team2 vs Watkins Memorial Senior Team4
 Senior: Utica Senior Team3 vs Heath Senior Team3
 Junior: Johnstown Junior Team1 vs Watkins Memorial Junior Team3
-Midi: Heath Midi Team2 vs Johnstown Midi Team1
-Midi: Johnstown Midi Team4 vs Utica Midi Team3"
+mini: Heath mini Team2 vs Johnstown mini Team1
+mini: Johnstown mini Team4 vs Utica mini Team3"
 Lakewood,Week 1,"Junior: Johnstown Junior Team3 vs Heath Junior Team3
-Midi: Licking Heights Midi Team2 vs Lakewood Midi Team2
+mini: Licking Heights mini Team2 vs Lakewood mini Team2
 Senior: Johnstown Senior Team1 vs Heath Senior Team3
-Midi: Heath Midi Team1 vs Licking Heights Midi Team4
+mini: Heath mini Team1 vs Licking Heights mini Team4
 Senior: Johnstown Senior Team4 vs Licking Heights Senior Team2
-Midi: Heath Midi Team3 vs Utica Midi Team4"
-Lakewood,Week 2,"Midi: Watkins Memorial Midi Team3 vs Heath Midi Team2
+mini: Heath mini Team3 vs Utica mini Team4"
+Lakewood,Week 2,"mini: Watkins Memorial mini Team3 vs Heath mini Team2
 Junior: Johnstown Junior Team3 vs Heath Junior Team4
 Junior: Utica Junior Team2 vs Lakewood Junior Team1
 Junior: Lakewood Junior Team2 vs Johnstown Junior Team2
@@ -109,81 +109,81 @@ Senior: Johnstown Senior Team2 vs Utica Senior Team3
 Senior: Utica Senior Team4 vs Watkins Memorial Senior Team2
 Junior: Johnstown Junior Team4 vs Licking Heights Junior Team2
 Senior: Johnstown Senior Team4 vs Lakewood Senior Team3
-Midi: Lakewood Midi Team1 vs Heath Midi Team2"
+mini: Lakewood mini Team1 vs Heath mini Team2"
 Lakewood,Week 4,"Senior: Lakewood Senior Team4 vs Johnstown Senior Team4
 Junior: Utica Junior Team3 vs Johnstown Junior Team1
-Midi: Heath Midi Team3 vs Lakewood Midi Team2
+mini: Heath mini Team3 vs Lakewood mini Team2
 Junior: Licking Heights Junior Team4 vs Lakewood Junior Team1
 Junior: Lakewood Junior Team4 vs Heath Junior Team3
 Senior: Watkins Memorial Senior Team3 vs Licking Heights Senior Team4"
 Lakewood,Week 5,"Senior: Watkins Memorial Senior Team2 vs Licking Heights Senior Team4
-Midi: Licking Heights Midi Team3 vs Utica Midi Team3
+mini: Licking Heights mini Team3 vs Utica mini Team3
 Junior: Heath Junior Team3 vs Johnstown Junior Team2
-Midi: Watkins Memorial Midi Team4 vs Licking Heights Midi Team2
+mini: Watkins Memorial mini Team4 vs Licking Heights mini Team2
 Junior: Licking Heights Junior Team4 vs Watkins Memorial Junior Team1
-Midi: Lakewood Midi Team2 vs Heath Midi Team2"
+mini: Lakewood mini Team2 vs Heath mini Team2"
 Lakewood,Week 6,"Junior: Johnstown Junior Team1 vs Lakewood Junior Team2
-Midi: Utica Midi Team4 vs Johnstown Midi Team2
-Midi: Lakewood Midi Team4 vs Utica Midi Team1
-Midi: Watkins Memorial Midi Team1 vs Lakewood Midi Team2
+mini: Utica mini Team4 vs Johnstown mini Team2
+mini: Lakewood mini Team4 vs Utica mini Team1
+mini: Watkins Memorial mini Team1 vs Lakewood mini Team2
 Senior: Heath Senior Team3 vs Johnstown Senior Team4
 Senior: Watkins Memorial Senior Team4 vs Lakewood Senior Team3"
 Lakewood,Week 7,"Senior: Heath Senior Team3 vs Lakewood Senior Team2
 Junior: Utica Junior Team4 vs Heath Junior Team2
-Midi: Johnstown Midi Team2 vs Lakewood Midi Team4
-Midi: Utica Midi Team3 vs Heath Midi Team1
-Midi: Lakewood Midi Team2 vs Johnstown Midi Team1
-Midi: Licking Heights Midi Team4 vs Utica Midi Team4"
-Lakewood,Week 8,"Midi: Watkins Memorial Midi Team3 vs Heath Midi Team4
+mini: Johnstown mini Team2 vs Lakewood mini Team4
+mini: Utica mini Team3 vs Heath mini Team1
+mini: Lakewood mini Team2 vs Johnstown mini Team1
+mini: Licking Heights mini Team4 vs Utica mini Team4"
+Lakewood,Week 8,"mini: Watkins Memorial mini Team3 vs Heath mini Team4
 Senior: Lakewood Senior Team3 vs Heath Senior Team2
 Senior: Licking Heights Senior Team1 vs Watkins Memorial Senior Team2
 Senior: Licking Heights Senior Team3 vs Watkins Memorial Senior Team3
 Senior: Utica Senior Team4 vs Heath Senior Team4
 Junior: Watkins Memorial Junior Team1 vs Licking Heights Junior Team3"
-Utica,Week 1,"Midi: Licking Heights Midi Team3 vs Utica Midi Team2
+Utica,Week 1,"mini: Licking Heights mini Team3 vs Utica mini Team2
 Senior: Licking Heights Senior Team4 vs Johnstown Senior Team2
 Senior: Utica Senior Team3 vs Watkins Memorial Senior Team1
-Midi: Lakewood Midi Team4 vs Johnstown Midi Team4
-Midi: Watkins Memorial Midi Team2 vs Heath Midi Team2
+mini: Lakewood mini Team4 vs Johnstown mini Team4
+mini: Watkins Memorial mini Team2 vs Heath mini Team2
 Junior: Johnstown Junior Team2 vs Utica Junior Team2"
 Utica,Week 2,"Senior: Heath Senior Team2 vs Lakewood Senior Team4
 Junior: Utica Junior Team3 vs Watkins Memorial Junior Team3
 Senior: Lakewood Senior Team1 vs Johnstown Senior Team2
-Midi: Heath Midi Team4 vs Licking Heights Midi Team2
-Midi: Lakewood Midi Team1 vs Watkins Memorial Midi Team4
+mini: Heath mini Team4 vs Licking Heights mini Team2
+mini: Lakewood mini Team1 vs Watkins Memorial mini Team4
 Senior: Watkins Memorial Senior Team2 vs Utica Senior Team2"
 Utica,Week 3,"Junior: Lakewood Junior Team1 vs Licking Heights Junior Team1
 Senior: Licking Heights Senior Team4 vs Watkins Memorial Senior Team4
 Junior: Heath Junior Team2 vs Lakewood Junior Team4
 Junior: Heath Junior Team1 vs Utica Junior Team4
 Senior: Watkins Memorial Senior Team1 vs Licking Heights Senior Team2
-Midi: Johnstown Midi Team1 vs Heath Midi Team3"
+mini: Johnstown mini Team1 vs Heath mini Team3"
 Utica,Week 4,"Senior: Johnstown Senior Team3 vs Licking Heights Senior Team1
-Midi: Utica Midi Team1 vs Heath Midi Team1
+mini: Utica mini Team1 vs Heath mini Team1
 Junior: Johnstown Junior Team3 vs Watkins Memorial Junior Team1
-Midi: Johnstown Midi Team2 vs Lakewood Midi Team1
+mini: Johnstown mini Team2 vs Lakewood mini Team1
 Senior: Johnstown Senior Team1 vs Lakewood Senior Team3
 Senior: Heath Senior Team4 vs Lakewood Senior Team2"
 Utica,Week 5,"Senior: Watkins Memorial Senior Team4 vs Licking Heights Senior Team3
 Senior: Utica Senior Team3 vs Johnstown Senior Team3
-Midi: Heath Midi Team3 vs Utica Midi Team1
+mini: Heath mini Team3 vs Utica mini Team1
 Senior: Watkins Memorial Senior Team3 vs Heath Senior Team4
 Senior: Lakewood Senior Team3 vs Utica Senior Team2"
-Utica,Week 6,"Midi: Watkins Memorial Midi Team2 vs Johnstown Midi Team4
+Utica,Week 6,"mini: Watkins Memorial mini Team2 vs Johnstown mini Team4
 Junior: Licking Heights Junior Team2 vs Watkins Memorial Junior Team2
 Junior: Watkins Memorial Junior Team4 vs Licking Heights Junior Team3
-Midi: Licking Heights Midi Team3 vs Lakewood Midi Team1
-Midi: Licking Heights Midi Team1 vs Johnstown Midi Team3"
+mini: Licking Heights mini Team3 vs Lakewood mini Team1
+mini: Licking Heights mini Team1 vs Johnstown mini Team3"
 Utica,Week 7,"Senior: Watkins Memorial Senior Team2 vs Utica Senior Team3
 Senior: Lakewood Senior Team4 vs Watkins Memorial Senior Team3
-Midi: Heath Midi Team3 vs Licking Heights Midi Team3
-Midi: Lakewood Midi Team3 vs Utica Midi Team2
-Midi: Utica Midi Team1 vs Lakewood Midi Team1
+mini: Heath mini Team3 vs Licking Heights mini Team3
+mini: Lakewood mini Team3 vs Utica mini Team2
+mini: Utica mini Team1 vs Lakewood mini Team1
 Senior: Licking Heights Senior Team4 vs Lakewood Senior Team1"
 Utica,Week 8,"Junior: Lakewood Junior Team4 vs Utica Junior Team4
 Junior: Lakewood Junior Team2 vs Licking Heights Junior Team4
 Junior: Heath Junior Team4 vs Utica Junior Team3
-Midi: Utica Midi Team2 vs Watkins Memorial Midi Team2
+mini: Utica mini Team2 vs Watkins Memorial mini Team2
 Junior: Heath Junior Team1 vs Lakewood Junior Team3
 Junior: Watkins Memorial Junior Team2 vs Johnstown Junior Team3"
 Heath,Week 1,"Junior: Watkins Memorial Junior Team2 vs Heath Junior Team4
@@ -192,32 +192,32 @@ Junior: Johnstown Junior Team1 vs Licking Heights Junior Team1
 Senior: Lakewood Senior Team4 vs Utica Senior Team1
 Senior: Heath Senior Team1 vs Watkins Memorial Senior Team4
 Junior: Licking Heights Junior Team2 vs Watkins Memorial Junior Team3"
-Heath,Week 2,"Midi: Lakewood Midi Team3 vs Watkins Memorial Midi Team1
+Heath,Week 2,"mini: Lakewood mini Team3 vs Watkins Memorial mini Team1
 Senior: Utica Senior Team4 vs Watkins Memorial Senior Team3
 Senior: Watkins Memorial Senior Team4 vs Heath Senior Team3
-Midi: Johnstown Midi Team3 vs Licking Heights Midi Team3
-Midi: Johnstown Midi Team1 vs Utica Midi Team3"
+mini: Johnstown mini Team3 vs Licking Heights mini Team3
+mini: Johnstown mini Team1 vs Utica mini Team3"
 Heath,Week 3,"Junior: Watkins Memorial Junior Team2 vs Heath Junior Team3
 Senior: Heath Senior Team4 vs Utica Senior Team1
-Midi: Licking Heights Midi Team4 vs Lakewood Midi Team3
+mini: Licking Heights mini Team4 vs Lakewood mini Team3
 Senior: Licking Heights Senior Team1 vs Watkins Memorial Senior Team3
-Midi: Utica Midi Team4 vs Watkins Memorial Midi Team4
-Midi: Utica Midi Team1 vs Watkins Memorial Midi Team2"
+mini: Utica mini Team4 vs Watkins Memorial mini Team4
+mini: Utica mini Team1 vs Watkins Memorial mini Team2"
 Heath,Week 4,"Junior: Johnstown Junior Team4 vs Watkins Memorial Junior Team3
-Midi: Watkins Memorial Midi Team1 vs Utica Midi Team4
-Midi: Johnstown Midi Team4 vs Licking Heights Midi Team2
+mini: Watkins Memorial mini Team1 vs Utica mini Team4
+mini: Johnstown mini Team4 vs Licking Heights mini Team2
 Junior: Licking Heights Junior Team1 vs Lakewood Junior Team3
 Senior: Utica Senior Team1 vs Watkins Memorial Senior Team4
-Midi: Lakewood Midi Team3 vs Watkins Memorial Midi Team2"
-Heath,Week 5,"Midi: Johnstown Midi Team2 vs Heath Midi Team4
+mini: Lakewood mini Team3 vs Watkins Memorial mini Team2"
+Heath,Week 5,"mini: Johnstown mini Team2 vs Heath mini Team4
 Junior: Lakewood Junior Team2 vs Johnstown Junior Team4
 Junior: Heath Junior Team2 vs Watkins Memorial Junior Team3
 Junior: Lakewood Junior Team3 vs Utica Junior Team3
-Midi: Lakewood Midi Team1 vs Watkins Memorial Midi Team2
+mini: Lakewood mini Team1 vs Watkins Memorial mini Team2
 Senior: Johnstown Senior Team4 vs Lakewood Senior Team1"
 Heath,Week 6,"Senior: Heath Senior Team4 vs Licking Heights Senior Team2
 Junior: Lakewood Junior Team1 vs Heath Junior Team1
-Midi: Watkins Memorial Midi Team3 vs Heath Midi Team3
+mini: Watkins Memorial mini Team3 vs Heath mini Team3
 Junior: Lakewood Junior Team3 vs Johnstown Junior Team3
 Senior: Johnstown Senior Team3 vs Heath Senior Team1
 Junior: Watkins Memorial Junior Team3 vs Heath Junior Team4"
@@ -225,17 +225,17 @@ Heath,Week 7,"Senior: Heath Senior Team2 vs Utica Senior Team1
 Senior: Utica Senior Team2 vs Johnstown Senior Team4
 Junior: Johnstown Junior Team4 vs Lakewood Junior Team1
 Senior: Watkins Memorial Senior Team1 vs Licking Heights Senior Team3
-Midi: Johnstown Midi Team4 vs Heath Midi Team4"
+mini: Johnstown mini Team4 vs Heath mini Team4"
 Heath,Week 8,"Senior: Johnstown Senior Team2 vs Watkins Memorial Senior Team1
 Senior: Licking Heights Senior Team2 vs Heath Senior Team1
-Midi: Heath Midi Team1 vs Licking Heights Midi Team3
+mini: Heath mini Team1 vs Licking Heights mini Team3
 Junior: Utica Junior Team2 vs Watkins Memorial Junior Team4
-Midi: Licking Heights Midi Team4 vs Johnstown Midi Team2
+mini: Licking Heights mini Team4 vs Johnstown mini Team2
 Junior: Heath Junior Team2 vs Licking Heights Junior Team2"
 Johnstown,Week 1,"Junior: Lakewood Junior Team1 vs Watkins Memorial Junior Team1
 Senior: Licking Heights Senior Team1 vs Utica Senior Team2
 Junior: Johnstown Junior Team4 vs Lakewood Junior Team4
-Midi: Lakewood Midi Team1 vs Watkins Memorial Midi Team1
+mini: Lakewood mini Team1 vs Watkins Memorial mini Team1
 Junior: Heath Junior Team1 vs Lakewood Junior Team2
 Junior: Licking Heights Junior Team3 vs Lakewood Junior Team3"
 Johnstown,Week 2,"Junior: Heath Junior Team2 vs Johnstown Junior Team1
@@ -243,25 +243,25 @@ Junior: Lakewood Junior Team4 vs Watkins Memorial Junior Team4
 Junior: Lakewood Junior Team3 vs Utica Junior Team4
 Senior: Utica Senior Team1 vs Johnstown Senior Team1
 Senior: Johnstown Senior Team3 vs Licking Heights Senior Team2
-Midi: Watkins Memorial Midi Team2 vs Licking Heights Midi Team4"
+mini: Watkins Memorial mini Team2 vs Licking Heights mini Team4"
 Johnstown,Week 3,"Junior: Lakewood Junior Team2 vs Utica Junior Team3
 Junior: Watkins Memorial Junior Team3 vs Licking Heights Junior Team3
 Junior: Utica Junior Team1 vs Watkins Memorial Junior Team4
 Senior: Lakewood Senior Team2 vs Licking Heights Senior Team3
-Midi: Heath Midi Team4 vs Lakewood Midi Team2
+mini: Heath mini Team4 vs Lakewood mini Team2
 Junior: Watkins Memorial Junior Team1 vs Johnstown Junior Team2"
 Johnstown,Week 4,"Senior: Licking Heights Senior Team3 vs Watkins Memorial Senior Team2
 Junior: Watkins Memorial Junior Team2 vs Heath Junior Team2
 Junior: Johnstown Junior Team2 vs Licking Heights Junior Team2
-Midi: Utica Midi Team3 vs Watkins Memorial Midi Team3
+mini: Utica mini Team3 vs Watkins Memorial mini Team3
 Junior: Lakewood Junior Team2 vs Utica Junior Team4
-Midi: Licking Heights Midi Team4 vs Heath Midi Team2"
-Johnstown,Week 5,"Midi: Johnstown Midi Team3 vs Lakewood Midi Team3
+mini: Licking Heights mini Team4 vs Heath mini Team2"
+Johnstown,Week 5,"mini: Johnstown mini Team3 vs Lakewood mini Team3
 Junior: Utica Junior Team2 vs Licking Heights Junior Team1
 Junior: Heath Junior Team4 vs Lakewood Junior Team4
 Senior: Utica Senior Team1 vs Heath Senior Team3
 Junior: Lakewood Junior Team1 vs Watkins Memorial Junior Team2
-Midi: Watkins Memorial Midi Team1 vs Licking Heights Midi Team4"
+mini: Watkins Memorial mini Team1 vs Licking Heights mini Team4"
 Johnstown,Week 6,"Senior: Watkins Memorial Senior Team3 vs Johnstown Senior Team2
 Senior: Johnstown Senior Team1 vs Utica Senior Team3
 Senior: Lakewood Senior Team1 vs Watkins Memorial Senior Team2
@@ -271,11 +271,11 @@ Junior: Johnstown Junior Team2 vs Heath Junior Team2"
 Johnstown,Week 7,"Junior: Licking Heights Junior Team1 vs Lakewood Junior Team4
 Junior: Heath Junior Team1 vs Watkins Memorial Junior Team3
 Senior: Licking Heights Senior Team1 vs Utica Senior Team4
-Midi: Licking Heights Midi Team2 vs Johnstown Midi Team3
+mini: Licking Heights mini Team2 vs Johnstown mini Team3
 Junior: Johnstown Junior Team2 vs Licking Heights Junior Team4"
-Johnstown,Week 8,"Midi: Johnstown Midi Team3 vs Lakewood Midi Team1
+Johnstown,Week 8,"mini: Johnstown mini Team3 vs Lakewood mini Team1
 Senior: Lakewood Senior Team1 vs Johnstown Senior Team1
 Senior: Lakewood Senior Team2 vs Utica Senior Team1
-Midi: Lakewood Midi Team3 vs Heath Midi Team3
+mini: Lakewood mini Team3 vs Heath mini Team3
 Junior: Heath Junior Team3 vs Lakewood Junior Team1
-Midi: Licking Heights Midi Team1 vs Watkins Memorial Midi Team1"
+mini: Licking Heights mini Team1 vs Watkins Memorial mini Team1"
