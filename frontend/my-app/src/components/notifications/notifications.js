@@ -1,82 +1,49 @@
-// src/components/notifications/Notifications.js
-import React, { useState } from 'react';
 import './notifications.css';
+import React, { useEffect, useState } from 'react';
 
-const Notifications = () => {
-  const [message, setMessage] = useState('');
-  const [messages, setMessages] = useState([]);
+const NotificationPage = () => {
+  const [announcements, setAnnouncements] = useState([]);
 
-  const handleSend = () => {
-    if (message.trim()) {
-      setMessages([...messages, message]);
-      setMessage('');
-    }
-  };
+  const backend_host = "http://127.0.0.1:5000";
+  // Fetch announcements from the backend
+  useEffect(() => {
+    const fetchAnnouncements = async () => {
+      try {
+        const response = await fetch(`${backend_host}/get-announcements`); 
+        if (!response.ok) {
+          throw new Error('Failed to fetch announcements');
+        }
+        const data = await response.json();
+        setAnnouncements(data);
+      } catch (error) {
+        console.error('Error fetching announcements:', error);
+      }
+    };
+    console.log('Announcements state:', announcements);
+    fetchAnnouncements();
+  }, []);
 
   return (
-    <div>
-      {/* Header */}
-      <div className="top-header">
-        <h1>GameDay</h1>
-        <div className="top-buttons">
-          <button className="header-button">Login</button>
-          <button className="header-button">Sign Up</button>
-        </div>
-      </div>
-
-      {/* Notifications Content */}
-      <div className="notifications-wrapper">
-        <div className="notifications-container">
-          <h2>Notifications</h2>
-
-
-          <div className="chat-log-container">
-            <div className="chat-window">
-              {messages.map((msg, index) => (
-                <div key={index} className="message">
-                  {msg}
+    <div className="notification-page">
+      <h1>Announcements</h1>
+        <div className="announcements-container">
+          {announcements.length === 0 ? (
+            <p>No announcements available.</p>
+          ) : (
+            announcements
+              .slice()
+              .map((announcement, index) => (
+                <div key={index} className="announcement-card">
+                  <p className="announcement-text">{announcement.text}</p>
+                  <p className="announcement-timestamp">
+                    Posted on: {new Date(announcement.timestamp).toLocaleString()}
+                  </p>
                 </div>
-              ))}
-            </div>
-
-            <div className="notification-log">
-              <h3>Notification Log</h3>
-              {messages.length === 0 ? (
-                <p>No notifications yet.</p>
-              ) : (
-                messages.map((msg, index) => (
-                  <div key={index} className="log-message">
-                    {msg}
-                  </div>
-                ))
-              )}
-            </div>
-          </div>
-
-          <div className="input-container">
-            <input
-              type="text"
-              value={message}
-              onChange={(e) => setMessage(e.target.value)}
-              placeholder="Type your message here..."
-              className="message-input"
-            />
-            <button onClick={handleSend} className="send-button">
-              Send
-            </button>
-          </div>
+              ))
+          )}
         </div>
-      </div>
-
-      {/* Footer */}
-      <div className="footer">
-        <button className="footer-button">Contact Us</button>
-        <button className="footer-button">Meet the Team</button>
-      </div>
     </div>
   );
 };
 
-export default Notifications;
-
-
+export default NotificationPage;

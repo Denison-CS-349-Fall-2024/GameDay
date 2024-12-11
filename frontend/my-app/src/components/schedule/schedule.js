@@ -1,12 +1,13 @@
-import React, { useState, useContext, useEffect } from "react";
-import { Calendar, momentLocalizer } from "react-big-calendar";
-import moment from "moment";
-import { ScheduleContext } from "../scheduleContext/scheduleContext";
-import "./schedule.css"; // Add your custom styling
-import EditEventModal from "./editEventModal";
-import { DndProvider } from "react-dnd";
-import { HTML5Backend } from "react-dnd-html5-backend";
-import withDragAndDrop from "react-big-calendar/lib/addons/dragAndDrop";
+import React, { useState, useContext, useEffect } from 'react';
+import { Calendar, momentLocalizer } from 'react-big-calendar';
+import moment from 'moment';
+import { ScheduleContext } from '../scheduleContext/scheduleContext';
+import './schedule.css'; // Add your custom styling
+import EditEventModal from './editEventModal'
+import { DndProvider } from 'react-dnd';
+import { HTML5Backend } from 'react-dnd-html5-backend';
+import withDragAndDrop from 'react-big-calendar/lib/addons/dragAndDrop';
+import Papa from 'papaparse'; // Import papaparse for CSV parsing
 
 const localizer = momentLocalizer(moment);
 const DraggableCalendar = withDragAndDrop(Calendar); // Wrap the Calendar with withDragAndDrop
@@ -20,7 +21,7 @@ const gyms = [
   "Johnstown",
 ];
 
-const SchedulePage = ({ readOnly }) => {
+const SchedulePage = ({ readOnly, allowImport }) => {
   const { schedule, setSchedule } = useContext(ScheduleContext);
   const [selectedGym, setSelectedGym] = useState(gyms[0]);
   const [showModal, setShowModal] = useState(false);
@@ -151,51 +152,117 @@ const SchedulePage = ({ readOnly }) => {
     saveScheduleToBackend(updatedSchedule);
   };
 
-  const backend_host = "http://50.19.159.206:5000";
-  const saveScheduleToBackend = async (updatedSchedule) => {
-    const formattedSchedule = updatedSchedule.map((event) => {
-      const startString = moment(event.start).format("YYYY-MM-DD HH:mm");
-      const endString = moment(event.end).format("YYYY-MM-DD HH:mm");
+    // Function to save schedule to backend from website change
+//   const backend_host = "http://50.19.159.206:5000";
+    const backend_host = "http://127.0.0.1:5000"
+    const saveScheduleToBackend = async (updatedSchedule) => {
+        const formattedSchedule = updatedSchedule.map((event) => {
+            const startString = moment(event.start).format("YYYY-MM-DD HH:mm");
+            const endString = moment(event.end).format("YYYY-MM-DD HH:mm");
 
-      return {
-        Gym: event.Gym,
-        Week: event.Week,
-        Matches: event.Matches,
-        Date: startString.split(" ")[0],
-        Time: `${startString.split(" ")[1]}-${endString.split(" ")[1]}`,
-      };
-    });
+            return {
+                Gym: event.Gym,
+                Week: event.Week,
+                Matches: event.Matches,
+                Date: startString.split(" ")[0],
+                Time: `${startString.split(" ")[1]}-${endString.split(" ")[1]}`,
+            };
+        });
 
-    try {
-      const response = await fetch(`${backend_host}/save-schedule`, {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(formattedSchedule),
-      });
+        try {
+            const response = await fetch(`${backend_host}/save-schedule`, {
+                method: "POST",
+                headers: { "Content-Type": "application/json" },
+                body: JSON.stringify(formattedSchedule),
+        });
 
-      if (!response.ok) {
-        alert("Failed to save schedule to the backend.");
-      }
-    } catch (error) {
-      console.error("Error saving schedule:", error);
-      alert("Error saving schedule.");
-    }
+        if (!response.ok) {
+            alert("Failed to save schedule to the backend.");
+        }
+        } catch (error) {
+            console.error("Error saving schedule:", error);
+            alert("Error saving schedule.");
+        }
   };
 
-  const exportScheduleToCSV = () => {
-    const headers = ["Gym", "Week", "Matches", "Date", "Time"];
-    const csvRows = [
-      headers.join(","),
-      ...schedule.map((event) => {
-        const startDate = moment(event.start).format("YYYY-MM-DD");
-        const startTime = moment(event.start).format("HH:mm");
-        const endTime = moment(event.end).format("HH:mm");
-        const timeSlot = `${startTime}-${endTime}`;
-        return [event.Gym, event.Week, event.Matches, startDate, timeSlot].join(
-          ","
-        );
-      }),
-    ];
+    // Function to save schedule to backend from imported schedule
+    // New function to save the imported schedule to the backend
+    const importScheduleToBackend = async (importedSchedule) => {
+        const formattedSchedule = importedSchedule.map((event) => {
+        return {
+            Gym: event.Gym,
+            Week: event.Week,
+            Matches: event.Matches,
+            Date: event.Date,
+            Time: event.Time,
+        };
+        });
+    
+        try {
+        const response = await fetch(`${backend_host}/save-schedule`, {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify(formattedSchedule),
+        });
+    
+        if (!response.ok) {
+            alert('Failed to save imported schedule to the backend.');
+        } else {
+            alert('Schedule imported successfully!');
+        }
+        } catch (error) {
+        console.error('Error saving imported schedule:', error);
+        alert('Error saving imported schedule.');
+        }
+    };
+
+    // Function to handle the imported CSV and save to the backend
+    const handleImportSchedule = (event) => {
+        const file = event.target.files[0];
+        if (!file) return;
+    
+        Papa.parse(file, {
+        header: true, // Use the first row as keys for the data
+        skipEmptyLines: true, // Skip empty rows
+        complete: (result) => {
+            const importedData = result.data.map((row) => ({
+            Gym: row.Gym,
+            Week: row.Week,
+            Matches: row.Matches,
+            Date: row.Date,
+            Time: row.Time,
+            start: new Date(`${row.Date}T${row.Time.split('-')[0]}`),
+            end: new Date(`${row.Date}T${row.Time.split('-')[1]}`),
+            }));
+    
+            // Save the imported schedule to the backend
+            importScheduleToBackend(importedData);
+    
+            // Update the local schedule state
+            setSchedule((prevSchedule) => [...prevSchedule, ...importedData]);
+        },
+        error: (error) => {
+            console.error('Error parsing CSV file:', error);
+            alert('Failed to parse the CSV file. Please check the format.');
+        },
+        });
+    };
+    
+    // Export schedule to csv
+    const exportScheduleToCSV = () => {
+        const headers = ["Gym", "Week", "Matches", "Date", "Time"];
+        const csvRows = [
+            headers.join(","),
+            ...schedule.map((event) => {
+                const startDate = moment(event.start).format("YYYY-MM-DD");
+                const startTime = moment(event.start).format("HH:mm");
+                const endTime = moment(event.end).format("HH:mm");
+                const timeSlot = `${startTime}-${endTime}`;
+                return [event.Gym, event.Week, event.Matches, startDate, timeSlot].join(
+                ","
+                );
+            }),
+        ];
 
     const csvContent = "data:text/csv;charset=utf-8," + csvRows.join("\n");
     const encodedUri = encodeURI(csvContent);
@@ -206,6 +273,58 @@ const SchedulePage = ({ readOnly }) => {
     link.click();
     document.body.removeChild(link);
   };
+
+    // Export schedule to ics file
+    const exportScheduleToICS = () => {
+        const headers = [
+            "BEGIN:VCALENDAR",
+            "VERSION:2.0",
+            "PRODID:-//Your App Name//NONSGML v1.0//EN",
+        ];
+    
+        // Create iCalendar events from the schedule
+        const events = schedule.map(event => {
+            const startDate = moment(event.start).utc().format("YYYYMMDDTHHmmss[Z]"); // UTC format
+            const endDate = moment(event.end).utc().format("YYYYMMDDTHHmmss[Z]"); // UTC format
+            const uid = `${event.Matches}-${event.Date}-${event.Time}`.replace(/\s+/g, "-"); // Unique ID for each event
+    
+            return [
+                "BEGIN:VEVENT",
+                `UID:${uid}`,
+                `DTSTAMP:${moment().utc().format("YYYYMMDDTHHmmss[Z]")}`, // Current timestamp
+                `DTSTART:${startDate}`,
+                `DTEND:${endDate}`,
+                `SUMMARY:${event.Matches}`, // Event title
+                `DESCRIPTION:Gym: ${event.Gym}, Week: ${event.Week}`, // Event details
+                "END:VEVENT",
+            ].join("\n");
+        });
+    
+        const footer = ["END:VCALENDAR"];
+    
+        // Combine the headers, events, and footer into a single .ics file content
+        const icsContent = [...headers, ...events, ...footer].join("\n");
+    
+        // Create a downloadable .ics file
+        const blob = new Blob([icsContent], { type: "text/calendar;charset=utf-8;" });
+        const link = document.createElement("a");
+        link.href = URL.createObjectURL(blob);
+        link.download = "schedule.ics";
+        document.body.appendChild(link);
+        link.click();
+        document.body.removeChild(link);
+    };
+
+    const [showExportModal, setShowExportModal] = useState(false);
+
+    const handleExport = (type) => {
+    if (type === 'csv') {
+        exportScheduleToCSV();
+    } else if (type === 'ics') {
+        exportScheduleToICS();
+    }
+    setShowExportModal(false); // Close modal after exporting
+    };
 
   return (
     <DndProvider backend={HTML5Backend}>
@@ -240,30 +359,53 @@ const SchedulePage = ({ readOnly }) => {
             onEventDrop={handleEventDrop}
             draggableAccessor={() => !readOnly}
           />
-          <div className="export-button">
-            <button
-              onClick={() => {
-                exportScheduleToCSV();
-                setShowModal(false);
-              }}
-            >
-              Export Schedule
-            </button>
-          </div>
+            <div className="export-button">
+                <button onClick={() => setShowExportModal(true)}>Export Schedule</button>
+                {allowImport && ( // Conditionally render Import Schedule button
+                    <>
+                        <button onClick={() => document.getElementById('import-schedule').click()}>
+                        Import Schedule
+                        </button>
+                        <input
+                        type="file"
+                        id="import-schedule"
+                        className="import-file-input"
+                        accept=".csv"
+                        onChange={handleImportSchedule}
+                        />
+                    </>
+                )}
+            </div>
+
+            {showExportModal && (
+            <div className="export-modal">
+                <div className="export-modal-content">
+                <p>Select the file type to export:</p>
+                <div className="export-options">
+                    <button onClick={() => handleExport('csv')}>Export as CSV</button>
+                    <button onClick={() => handleExport('ics')}>Export as ICS</button>
+                    <button onClick={() => setShowExportModal(false)}>Cancel</button>
+                </div>
+                </div>
+            </div>
+            )}
         </div>
         {showModal && (
           <>
             <div className="overlay" onClick={() => setShowModal(false)}></div>
             <div className="modal-wrapper">
-              <EditEventModal
-                showModal={showModal}
-                setShowModal={setShowModal}
-                modalEvent={modalEvent}
-                setModalEvent={setModalEvent}
-                handleFormSubmit={handleFormSubmit}
-                handleDeleteEvent={handleDeleteEvent}
-                isEditing={isEditing}
-              />
+                <div className="modal-content" onClick={(e) => e.stopPropagation()}>
+                    <EditEventModal
+                    showModal={showModal}
+                    setShowModal={setShowModal}
+                    modalEvent={modalEvent}
+                    setModalEvent={setModalEvent}
+                    handleFormSubmit={handleFormSubmit}
+                    handleDeleteEvent={handleDeleteEvent}
+                    isEditing={isEditing}
+                    />
+                </div>
+              
             </div>
           </>
         )}

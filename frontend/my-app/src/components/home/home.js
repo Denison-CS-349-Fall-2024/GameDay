@@ -79,7 +79,7 @@ const HomeScreen = () => {
 
       <div className="schedule-switcher">
         {/* <ScheduleSwitcher/>  */}
-        <SchedulePage readOnly={true} />
+        <SchedulePage readOnly={true} allowImport={false}/>
         
       </div>
 

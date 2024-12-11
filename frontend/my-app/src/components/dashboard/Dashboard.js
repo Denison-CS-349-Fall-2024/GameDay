@@ -5,13 +5,18 @@ import StandingPreview from '../standings_preview/standings_preview';
 import SchedulePage from '../schedule/schedule';
 import { ScheduleContext } from '../scheduleContext/scheduleContext';
 import './Dashboard.css';
+import axios from "axios";
 
 const DashboardComponent = () => {
   const { schedule, setSchedule } = useContext(ScheduleContext);
   const [loading, setLoading] = useState(false);
   const navigate = useNavigate(); // Initialize navigate
+  const [announcementText, setAnnouncementText] = useState("");
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [showModal, setShowModal] = useState(false); // State for modal visibility
 
-  const backend_host = 'http://50.19.159.206:5000';
+  // const backend_host = 'http://50.19.159.206:5000';
+  const backend_host = "http://127.0.0.1:5000"
 
   const handleCreateSchedule = async () => {
     setLoading(true);
@@ -55,6 +60,29 @@ const DashboardComponent = () => {
     fetchSchedule();
   }, [setSchedule]);
 
+  const handleMakeAnnouncement = async () => {
+    if (!announcementText.trim()) {
+      alert("Announcement text cannot be empty!");
+      return;
+    }
+
+    setIsSubmitting(true);
+    try {
+      const response = await axios.post(`${backend_host}/save-announcements`, {
+        text: announcementText,
+      });
+      alert(response.data.message || "Announcement created successfully!");
+      setAnnouncementText(""); // Clear the input field
+    } catch (error) {
+      alert(
+        error.response?.data?.error ||
+          "An error occurred while creating the announcement."
+      );
+    } finally {
+      setIsSubmitting(false);
+    }
+  };
+
   return (
     <div className="dashboard">
       <header className="dashboard-header">
@@ -62,7 +90,7 @@ const DashboardComponent = () => {
         <nav>
           <ul>
             <li onClick={handleCreateSchedule}>{loading ? 'Creating...' : 'Create Schedule'}</li>
-            <li>Input Schedule</li>
+            <li onClick={() => setShowModal(true)}>Make Announcement</li>
             <li onClick={handleLogout}>Logout</li>
           </ul>
         </nav>
@@ -75,7 +103,7 @@ const DashboardComponent = () => {
         </section>
 
         <div className="schedule-switcher">
-          <SchedulePage readOnly={false} />
+          <SchedulePage readOnly={false} allowImport={true} />
         </div>
       </main>
 
@@ -83,6 +111,42 @@ const DashboardComponent = () => {
         <button className="footer-button">Contact Us</button>
         <button className="footer-button">Meet the Team</button>
       </footer>
+
+      {/* Modal */}
+      {showModal && (
+        <div className="announcement-modal">
+          <div className="modal-content">
+            <textarea
+              className="announcement-textarea"
+              placeholder="Enter announcement text"
+              value={announcementText}
+              onChange={(e) => setAnnouncementText(e.target.value)}
+            />
+            <div className="modal-buttons">
+              <button
+                className="cancel-button"
+                onClick={() => {
+                  setShowModal(false); // Close modal
+                  setAnnouncementText(""); // Clear input
+                }}
+              >
+                Cancel
+              </button>
+              <button
+                className="submit-button"
+                onClick={() => {
+                  handleMakeAnnouncement();
+                  setShowModal(false); // Close modal after submit
+                  setAnnouncementText(""); // Clear input
+                }}
+              >
+                Submit
+              </button>
+            </div>
+          </div>
+        </div>
+      )}
+
     </div>
   );
 };
