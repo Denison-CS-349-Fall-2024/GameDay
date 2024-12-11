@@ -173,6 +173,62 @@ def save_schedule():
             os.remove(temp_filename)
         return jsonify({"error": str(e)}), 500
 
+# Route to get the notifications
+@app.route('/get-announcements', methods=['GET'])
+def get_announcements():
+    file_path = "data/notification.txt"
+    try:
+        if not os.path.exists(file_path):
+            return jsonify([])  # Return an empty list if the file doesn't exist
+        
+        with open(file_path, 'r') as file:
+            lines = file.readlines()
+        
+        announcements = []
+        for line in lines:
+            parts = line.strip().split('|')
+            if len(parts) == 2:  # Ensure proper format (text|timestamp)
+                announcements.append({
+                    'text': parts[0].strip(),
+                    'timestamp': parts[1].strip()
+                })
+        
+        return jsonify(announcements)
+    except Exception as e:
+        return jsonify({'error': str(e)}), 500
+
+# Save announcement to the file
+@app.route('/save-announcements', methods=['POST'])
+def create_announcement():
+    new_announcement = request.json.get('text')
+    if not new_announcement:
+        return jsonify({"error": "Announcement text is required"}), 400
+
+    # Correct timestamp format
+    timestamp = datetime.now().isoformat()  # ISO format (e.g., 2024-12-10T15:00:00)
+    new_entry = f"{new_announcement}|{timestamp}\n"
+
+    temp_file_path = "data/temp_notification.txt"
+    file_path = "data/notification.txt"
+
+    try:
+        # Create a temporary file to store new content
+        with open(temp_file_path, 'w') as temp_file:
+            # Write the new announcement first
+            temp_file.write(new_entry)
+
+            # Read existing announcements and append them
+            if os.path.exists(file_path):
+                with open(file_path, 'r') as original_file:
+                    temp_file.writelines(original_file.readlines())
+
+        # Replace the original file with the updated one
+        os.replace(temp_file_path, file_path)
+
+        return jsonify({"message": "Announcement created successfully!"})
+    except Exception as e:
+        return jsonify({"error": str(e)}), 500
+
 if __name__ == '__main__':
-    app.run(host='0.0.0.0', port=5000, debug=True)
-    # app.run(port=5000, debug=True)
+    # app.run(host='0.0.0.0', port=5000, debug=True)
+    app.run(port=5000, debug=True)

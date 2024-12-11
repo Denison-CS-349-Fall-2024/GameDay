@@ -4,10 +4,10 @@ import { useNavigate } from 'react-router-dom';
 import './standings_preview.css';
 
 const standings = [
-    { school: "Watkins Memorial", category: "Mini", color: "Black", wins: 10, losses: 2 },
-    { school: "Watkins Memorial", category: "Mini", color: "Gold", wins: 8, losses: 4 },
-    { school: "Watkins Memorial", category: "Mini", color: "White", wins: 7, losses: 5 },
-    // { school: "Watkins Memorial", category: "Mini", color: "Grey", wins: 6, losses: 6 },
+    { school: "Watkins Memorial", category: "midi", color: "Black", wins: 10, losses: 2 },
+    { school: "Watkins Memorial", category: "midi", color: "Gold", wins: 8, losses: 4 },
+    { school: "Watkins Memorial", category: "midi", color: "White", wins: 7, losses: 5 },
+    // { school: "Watkins Memorial", category: "midi", color: "Grey", wins: 6, losses: 6 },
     // { school: "Watkins Memorial", category: "Junior", color: "Black", wins: 9, losses: 3 },
   ];
 
