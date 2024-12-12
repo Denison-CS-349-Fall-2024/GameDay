@@ -6,6 +6,7 @@ import sys
 GAME_TIME_START = "17:30"  # Start time (5:30 PM)
 GAME_DURATION = timedelta(minutes=75)  # Duration (1 hour 15 minutes)
 DAYS_PER_WEEK = 4  # Monday to Thursday
+MAX_GAMES_PER_DAY = 8 // DAYS_PER_WEEK  # Maximum games per day
 
 # Function to get the nearest Monday if the date is a weekend
 def get_nearest_monday(date):
@@ -25,7 +26,6 @@ def assign_dates_and_times(games, start_date):
             week_start_date = get_nearest_monday(start_date + timedelta(weeks=int(week_number.split()[1]) - 1))
             schedule[week_number] = {
                 "date": week_start_date,
-                "day_idx": 0,  # Tracks Monday to Thursday scheduling
                 "daily_game_counts": [0] * DAYS_PER_WEEK  # Tracks games scheduled per day
             }
     
@@ -38,31 +38,50 @@ def assign_dates_and_times(games, start_date):
         # Split each match into individual entries using '\n'
         match_lines = game["Matches"].split("\n")
         for match in match_lines:
-            # Calculate the day offset (Monday to Thursday)
-            day_offset = week_info["day_idx"] % DAYS_PER_WEEK
-            game_date = week_info["date"] + timedelta(days=day_offset)
-            
-            # Start time for all games is fixed at 5:30 PM
-            time_slot = "17:30-18:45"
-            
-            # Format match to remove underscores and handle spacing
-            formatted_match = match.replace("_", " ").replace(" Team ", " Team")
+            assigned = False
+            for day_offset in range(DAYS_PER_WEEK):  # Check each day from Monday to Thursday
+                game_date = week_info["date"] + timedelta(days=day_offset)
+                game_count_for_day = week_info["daily_game_counts"][day_offset]
 
-            # Create an entry for each match
-            all_games.append({
-                "Gym": game["Gym"],
-                "Week": week_number,
-                "Matches": formatted_match.strip(),  # Strip any excess whitespace
-                "Date": game_date.strftime("%Y-%m-%d"),
-                "Time": time_slot
-            })
-            
-            # Increment the game count for the day
-            week_info["daily_game_counts"][day_offset] += 1
-            
-            # Move to the next day if the current day has reached capacity
-            if week_info["daily_game_counts"][day_offset] >= (8 // DAYS_PER_WEEK):  # Adjust day capacity dynamically
-                week_info["day_idx"] += 1
+                if game_count_for_day < MAX_GAMES_PER_DAY:
+                    game_start_time = datetime.strptime(GAME_TIME_START, "%H:%M") + GAME_DURATION * game_count_for_day
+                    game_end_time = (game_start_time + GAME_DURATION).strftime("%H:%M")
+                    time_slot = f"{game_start_time.strftime('%H:%M')}-{game_end_time}"
+
+                    # Format match to remove underscores and handle spacing
+                    formatted_match = match.replace("_", " ").replace(" Team ", " Team")
+
+                    # Create an entry for the match
+                    all_games.append({
+                        "Gym": game["Gym"],
+                        "Week": week_number,
+                        "Matches": formatted_match.strip(),
+                        "Date": game_date.strftime("%Y-%m-%d"),
+                        "Time": time_slot
+                    })
+
+                    # Increment the game count for the day
+                    week_info["daily_game_counts"][day_offset] += 1
+                    assigned = True
+                    break
+
+            # If all days are full, move to the next week
+            if not assigned:
+                week_info["date"] += timedelta(weeks=1)
+                week_info["daily_game_counts"] = [0] * DAYS_PER_WEEK  # Reset daily counts for the new week
+                game_date = week_info["date"]
+                time_slot = "17:30-18:45"
+
+                formatted_match = match.replace("_", " ").replace(" Team ", " Team")
+                all_games.append({
+                    "Gym": game["Gym"],
+                    "Week": week_number,
+                    "Matches": formatted_match.strip(),
+                    "Date": game_date.strftime("%Y-%m-%d"),
+                    "Time": time_slot
+                })
+
+                week_info["daily_game_counts"][0] += 1  # Assign to the first day of the new week
     
     return all_games
 
