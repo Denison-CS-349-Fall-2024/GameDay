@@ -42,11 +42,8 @@ def assign_dates_and_times(games, start_date):
             day_offset = week_info["day_idx"] % DAYS_PER_WEEK
             game_date = week_info["date"] + timedelta(days=day_offset)
             
-            # Determine the start time for the game based on how many games are already scheduled on that day
-            game_count_for_day = week_info["daily_game_counts"][day_offset]
-            game_start_time = datetime.strptime(GAME_TIME_START, "%H:%M") + GAME_DURATION * game_count_for_day
-            game_end_time = (game_start_time + GAME_DURATION).strftime("%H:%M")
-            time_slot = f"{game_start_time.strftime('%H:%M')}-{game_end_time}"
+            # Start time for all games is fixed at 5:30 PM
+            time_slot = "17:30-18:45"
             
             # Format match to remove underscores and handle spacing
             formatted_match = match.replace("_", " ").replace(" Team ", " Team")
