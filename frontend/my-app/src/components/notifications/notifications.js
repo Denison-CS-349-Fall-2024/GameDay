@@ -4,7 +4,7 @@ import React, { useEffect, useState } from 'react';
 const NotificationPage = () => {
   const [announcements, setAnnouncements] = useState([]);
 
-  const backend_host = "http://127.0.0.1:5000";
+  const backend_host = "http://50.19.159.206:5000";
   // Fetch announcements from the backend
   useEffect(() => {
     const fetchAnnouncements = async () => {
