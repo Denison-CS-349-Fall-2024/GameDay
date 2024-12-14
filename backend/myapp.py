@@ -1,3 +1,7 @@
+# Flask app for managing login, signup, schedule, and announcement functionalities
+# Provides endpoints for handling user authentication, schedule creation, and notifications
+# Includes a simple SSE (Server-Sent Events) for live notifications
+
 import json
 import os
 from datetime import datetime, timedelta
@@ -12,6 +16,7 @@ CORS(app)
 # CORS(app, resources={r"/*": {"origins": "http://localhost:3000"}}, supports_credentials=True)
 
 # Function to find the nearest Monday in the future
+# Returns the date of the next Monday as a string in the format "MM/DD/YYYY"
 def get_nearest_monday():
     today = datetime.now()
     days_until_monday = (7 - today.weekday()) % 7
@@ -19,6 +24,8 @@ def get_nearest_monday():
     return nearest_monday.strftime("%m/%d/%Y")
 
 # Load users from JSON file
+# Reads `loginInfo.json` to retrieve user data
+# Returns a dictionary of users or an empty dictionary if the file doesn't exist or is corrupted
 def load_users():
     try:
         with open('loginInfo.json', 'r') as file:
@@ -29,6 +36,8 @@ def load_users():
         return {}
 
 # Save users back to JSON file
+# Writes user data to `loginInfo.json` safely by first creating a temporary file
+# Handles exceptions to ensure data consistency
 def save_users(users):
     try:
         # Write data to a temporary file first
@@ -40,11 +49,16 @@ def save_users(users):
     except Exception as e:
         print("An error occurred while saving the users:", e)
 
+# Home endpoint
+# A simple endpoint to verify that the server is running
+# Returns a plain "Hello, World!" message
 @app.route('/')
 def home():
     return "Hello, World!"
 
-# **Route for sending notifications using SSE**
+# SSE notifications endpoint
+# Simulates real-time notifications using Server-Sent Events
+# Sends a new notification every 5 seconds
 @app.route('/notifications')
 def notifications():
     def generate():
@@ -55,6 +69,9 @@ def notifications():
     return Response(generate(), content_type='text/event-stream')
 
 # Login endpoint
+# Handles POST requests for user login
+# Verifies user credentials against data in `loginInfo.json`
+# Returns a success or failure response
 @app.route('/api/login', methods=['POST'])
 def login():
     if request.method == 'OPTIONS':
@@ -78,6 +95,9 @@ def login():
     return jsonify({"message": "Invalid username or password", "status": "failure"}), 401
 
 # Signup endpoint
+# Handles POST requests for user registration
+# Adds a new user to `loginInfo.json` if the username doesn't already exist
+# Returns a success or failure response
 @app.route('/api/signup', methods=['POST', 'OPTIONS'])
 def signup():
     if request.method == 'OPTIONS':
@@ -97,6 +117,10 @@ def signup():
 
     return jsonify({"message": "Signup successful", "status": "success"}), 201
 
+# Schedule creation endpoint
+# Executes `sched.py` and `add_datetime.py` scripts to generate a schedule
+# Passes the nearest Monday as a parameter to `add_datetime.py`
+# Returns a success or failure response
 @app.route('/create-schedule', methods=['POST'])
 def create_schedule():
     try:
@@ -113,7 +137,10 @@ def create_schedule():
     except subprocess.CalledProcessError as e:
         return jsonify({"error": str(e)}), 500
 
-# Route to get the schedule data from the CSV file
+# Get schedule endpoint
+# Reads schedule data from `data/full_schedule.csv`
+# Formats data for the frontend and returns it as a JSON response
+# Handles errors related to file operations
 @app.route('/get-schedule', methods=['GET'])
 def get_schedule():
     try:
@@ -135,7 +162,11 @@ def get_schedule():
     except Exception as e:
         return jsonify({"error": str(e)}), 500
     
-# Route to save the updated schedule
+# Save schedule endpoint
+# Accepts schedule data as JSON from the frontend
+# Validates and writes the data to a temporary CSV file
+# Replaces the original schedule file only if the operation is successful
+# Returns a success or failure response
 @app.route('/save-schedule', methods=['POST'])
 def save_schedule():
     temp_filename = 'data/temp_full_schedule.csv'  # Ensure temp_filename is defined outside the try block
@@ -173,7 +204,11 @@ def save_schedule():
             os.remove(temp_filename)
         return jsonify({"error": str(e)}), 500
 
-# Route to get the notifications
+# Get announcements endpoint
+# Reads announcements from `data/notification.txt`
+# Parses each line into text and timestamp
+# Returns a list of announcements in JSON format
+# Handles errors related to file operations
 @app.route('/get-announcements', methods=['GET'])
 def get_announcements():
     file_path = "data/notification.txt"
@@ -197,7 +232,11 @@ def get_announcements():
     except Exception as e:
         return jsonify({'error': str(e)}), 500
 
-# Save announcement to the file
+# Save announcements endpoint
+# Accepts new announcement text from the frontend
+# Prepends the new announcement to `data/notification.txt`
+# Uses a temporary file for safe writing
+# Returns a success or failure response
 @app.route('/save-announcements', methods=['POST'])
 def create_announcement():
     new_announcement = request.json.get('text')
@@ -229,6 +268,9 @@ def create_announcement():
     except Exception as e:
         return jsonify({"error": str(e)}), 500
 
+# Main entry point
+# Starts the Flask server on host `0.0.0.0` and port `5000`
+# Enables debug mode for development purposes
 if __name__ == '__main__':
     # app.run(port=5000, debug=True)
     app.run(host='0.0.0.0', port=5000, debug=True)
