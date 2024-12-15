@@ -68,9 +68,9 @@ def write_schedule(filename, schedule):
 def main(input_filename, output_filename, start_date_str):
     try:
         # Parse the starting date
-        start_date = datetime.strptime(start_date_str, "%Y-%m-%d")
+        start_date = datetime.strptime(start_date_str, "%m/%d/%Y")
     except ValueError:
-        print("Invalid date format. Please use YYYY-MM-DD.")
+        print("Invalid date format. Please use MM/DD/YYYY.")
         sys.exit(1)
     
     # Read games from the input CSV
