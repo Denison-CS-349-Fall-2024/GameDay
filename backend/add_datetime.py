@@ -85,12 +85,13 @@ def main(input_filename, output_filename, start_date_str):
 
 # Entry point for the script
 if __name__ == "__main__":
-    if len(sys.argv) != 4:
-        print("Usage: python schedule_games.py <input_filename> <output_filename> <start_date (YYYY-MM-DD)>")
+    if len(sys.argv) != 2:
+        print("Usage: python add_datetime.py MM/DD/YYYY")
         sys.exit(1)
-    
-    input_filename = "data/gym_calendar_schedule.csv"
-    output_filename = "data/full_schedule.csv"
-    start_date_str = sys.argv[3]
+
+    start_date_str = sys.argv[1]  # Date input from the command-line argument
+    input_filename = "data/gym_calendar_schedule.csv"  # Path to the input CSV
+    output_filename = "data/full_schedule.csv"  # Path to the output CSV
 
     main(input_filename, output_filename, start_date_str)
+
