@@ -27,7 +27,7 @@ def assign_dates_and_times(games, start_date):
         
         for match in matches:
             # Ensure we cycle through days if the day's schedule is full
-            if current_time >= datetime.strptime("21:00", "%H:%M"):
+            if current_time >= datetime.strptime("20:00", "%H:%M"):
                 current_day_index = (current_day_index + 1) % DAYS_PER_WEEK
                 current_time = datetime.strptime(GAME_TIME_START, "%H:%M")
 
