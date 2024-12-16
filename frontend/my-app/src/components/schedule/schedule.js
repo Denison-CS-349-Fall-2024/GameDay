@@ -326,6 +326,10 @@ const SchedulePage = ({ readOnly, allowImport }) => {
     setShowExportModal(false); // Close modal after exporting
     };
 
+    function hoverInfo({ event }) {
+      return <div title={event.title}>{event.title}</div>;
+    }
+
   return (
     <DndProvider backend={HTML5Backend}>
       <div className="calendar-wrapper">
@@ -358,6 +362,7 @@ const SchedulePage = ({ readOnly, allowImport }) => {
             }
             onEventDrop={handleEventDrop}
             draggableAccessor={() => !readOnly}
+            components={{ event: hoverInfo }} 
           />
             <div className="export-button">
                 <button onClick={() => setShowExportModal(true)}>Export Schedule</button>
