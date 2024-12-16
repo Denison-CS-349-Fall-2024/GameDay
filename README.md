@@ -5,9 +5,7 @@ This repository contains the frontend code for GameDay, a web application built 
 
 The design of GameDay focuses on providing clean layouts for each page, such as the login, signup, dashboard, schedule management, and standings display. It allows users to effortlessly manage their information, receive notifications, and interact with the created schedule in a way that’s both visually appealing and highly functional. The pages were carefully crafted to match the web application’s requirements, ensuring that every aspect of the user journey, from authentication to managing personal data, is streamlined and intuitive. Furthermore, the structure of the frontend is modular, which makes the application easy to maintain and scale, allowing for future enhancements to both the design and functionality as needed.
 
-
-
-# Folder Structure
+Folder Structure:
 
 Here’s a high-level overview of the folder structure:
 
