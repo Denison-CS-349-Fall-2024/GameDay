@@ -128,4 +128,44 @@ Products:
     Standings Page:
         - A component for displaying team standings to users.
 
+GameDay Backend Application
+Overview:
+The GameDay backend is the backbone of a sports scheduling web application that integrates with a React-based frontend. Built using Python with the Flask framework, it handles data management, user authentication, and interactions with game schedules and standings. The backend is designed to be robust and scalable, ensuring that as user demand increases, the system remains reliable and responsive.
+
+Technology Choices:
+Python and Flask: We chose Python due to its readability and Flask for its simplicity and ability to scale up to complex applications. Flask's lightweight and modular design is ideal for a service-oriented architecture, allowing us to efficiently handle requests and manage the application's core functionalities.
+
+Databases: Our backend utilizes CSV files for storing static data and integrates with ICS (iCalendar) files for managing game schedules. This choice allows for easy data manipulation and integration with various calendar services, enhancing the application's utility.
+
+AWS Deployment: Deployment is handled through AWS, utilizing services such as Amplify for frontend deployment and EC2 for backend services. This combination offers a robust, scalable environment for hosting our application, ensuring high availability and performance.
+
+Integration with Frontend:
+The backend communicates with the frontend through well-defined API endpoints, enabling seamless data transactions and updates. This architecture supports real-time interactions, allowing users to manage their schedules, view standings, and receive notifications dynamically. Flask routes handle the logic for API requests, ensuring data is correctly processed and sent to the frontend.
+
+The API design is focused on providing a smooth integration with the React components, enabling dynamic updates without reloading the page. Authentication processes are securely managed through the backend, leveraging Flask's capabilities to provide secure routes and data integrity.
+
+Folder Structure:
+Here’s a high-level overview of the backend folder structure:
+
+
+backend/
+│
+├── data/                 # Data storage for CSV and ICS files
+│   ├── users.csv         # User information
+│   ├── games.ics         # Game schedules
+│
+├── models.py             # Database models
+├── myapp.py              # Flask application setup and routes
+├── requirements.txt      # Dependencies for the project
+├── README.md             # Backend documentation
+│
+└── api/
+    ├── auth.py           # Authentication routes
+    ├── schedule.py       # Schedule management routes
+    └── notifications.py  # Notification handling routes
+Aim & Goals:
+The backend's primary goal is to provide a robust, secure, and responsive API that allows for efficient data management and seamless user experience across the GameDay application. By maintaining a high level of performance and reliability, we ensure that the application scales with user growth and that data integrity is maintained throughout the user journey.
+
+By using Python, Flask, and AWS, the backend architecture not only supports the current requirements but also lays a foundation for future enhancements and integrations, making GameDay a versatile tool for sports management.
+
 
