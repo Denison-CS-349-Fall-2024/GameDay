@@ -3,6 +3,50 @@ import csv
 from collections import defaultdict
 import os
 
+"""
+Gym Calendar Game Scheduler
+
+This script generates a weekly game schedule for different leagues (Mini, Junior, and Senior)
+across multiple schools (Watkins Memorial, Licking Heights, Lakewood, Utica, Heath, and Johnstown).
+It ensures that games are spread evenly across gyms and weeks while respecting constraints
+such as the number of games each team can play and preventing duplicate matchups.
+
+## Key Features:
+
+1. **Teams and Leagues Setup**:
+   - For each league and school, 4 teams are created.
+   - Teams are named as `<School>_<League>_Team_<Number>`.
+
+2. **Matchups Generation**:
+   - All possible matchups between teams of different schools are generated for each league.
+   - Teams from the same school do not play each other.
+
+3. **Scheduling Logic**:
+   - Each week consists of 8 games per gym, distributed across the leagues.
+   - The scheduler assigns games to gyms while enforcing constraints:
+     - Teams can only play a maximum of `weeks` games (e.g., 8 games).
+     - Duplicate matchups (same home vs. away) are avoided.
+     - Each gym hosts games belonging to all three leagues.
+
+4. **Randomized Matchup Selection**:
+   - Matchups are shuffled to introduce randomness in the schedule.
+   - The algorithm attempts to distribute games evenly and avoid team conflicts.
+
+5. **Termination Condition**:
+   - The scheduler runs until the total number of games scheduled meets or exceeds 550.
+
+6. **Output**:
+   - The generated schedule is saved to a CSV file named `gym_calendar_schedule.csv` in a folder named `data`.
+   - Each row in the CSV contains:
+       - `Gym`: The gym hosting the games.
+       - `Week`: The week number.
+       - `Matches`: A list of matches scheduled at that gym, including team names and leagues.
+
+7. **Directory Management**:
+   - If the `data` folder does not exist, it is created to store the CSV file.
+
+"""
+
 # Initialize data
 schools = ["Watkins Memorial", "Licking Heights", "Lakewood", "Utica", "Heath", "Johnstown"]
 leagues = ["Mini", "Junior", "Senior"]

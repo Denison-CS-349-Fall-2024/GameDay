@@ -2,6 +2,55 @@ import csv
 from datetime import datetime, timedelta
 import sys
 
+"""
+Game Schedule Date and Time Assignment
+
+This script enhances a gym game schedule by assigning specific dates and time slots for matches.
+The games are distributed across **Monday to Thursday** evenings, starting at 5:30 PM, with each game
+lasting **1 hour and 15 minutes**. The updated schedule includes precise game dates and time ranges.
+
+## Key Features:
+
+1. **Input**:
+   - Reads a CSV file containing:
+     - `Gym`: The gym hosting the games.
+     - `Week`: The week of the match (e.g., "Week 1").
+     - `Matches`: A list of matches (team pairings).
+
+2. **Date and Time Assignment**:
+   - Assigns games to days (`Monday` to `Thursday`) of the corresponding week.
+   - Matches start at **5:30 PM** and increment in 1-hour-15-minute intervals.
+   - If matches exceed the day's time limit (8:00 PM), scheduling continues on the next available day.
+   - Dates are calculated relative to a user-specified start date.
+
+3. **Scheduling Logic**:
+   - The schedule progresses week-by-week:
+     - Games are evenly distributed across available days.
+     - Each match receives:
+       - **Date**: Specific date (e.g., `2024-06-18`).
+       - **Time**: Time range (e.g., `17:30-18:45`).
+
+4. **Output**:
+   - Generates a new CSV file containing:
+       - `Gym`: The gym hosting the match.
+       - `Week`: Week number of the match.
+       - `Matches`: Teams playing (e.g., `Mini: Team_A vs Team_B`).
+       - `Date`: Scheduled date for the match.
+       - `Time`: Time range for the match.
+
+5. **Command-Line Interface**:
+   - The script requires a start date in the format `MM/DD/YYYY` as input.
+   - Example usage:
+     ```
+     python add_datetime.py 06/10/2024
+     ```
+
+6. **File Paths**:
+   - **Input File**: `data/gym_calendar_schedule.csv` (pre-generated schedule without dates/times).
+   - **Output File**: `data/full_schedule.csv` (updated schedule with dates/times).
+
+"""
+
 # Constants for scheduling
 GAME_TIME_START = "17:30"  # Start time (5:30 PM)
 GAME_DURATION = timedelta(minutes=75)  # Duration (1 hour 15 minutes)
