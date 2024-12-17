@@ -147,22 +147,7 @@ The API design is focused on providing a smooth integration with the React compo
 Folder Structure:
 Here’s a high-level overview of the backend folder structure:
 
-
-backend/
-│
-├── data/                 # Data storage for CSV and ICS files
-│   ├── users.csv         # User information
-│   └── games.ics         # Game schedules
-│
-├── models.py             # Database models
-├── myapp.py              # Flask application setup and routes
-├── requirements.txt      # Dependencies for the project
-├── README.md             # Backend documentation
-│
-└── api/
-    ├── auth.py           # Authentication routes
-    ├── schedule.py       # Schedule management routes
-    └── notifications.py  # Notification handling routes
+The backend directory contains several subdirectories and files. Within the data/ directory, we store user information and game schedules in users.csv and games.ics files, respectively. The models.py file contains the database models, while myapp.py sets up the Flask application and defines routes. Dependency details are listed in the requirements.txt file. The README.md provides documentation about the backend. Within the api/ directory, there are specific files for different purposes: auth.py handles authentication routes, schedule.py manages schedule-related routes, and notifications.py deals with notification routes. This organization supports efficient management and scalability of the backend functionality.
 
 Aim & Goals:
 The backend's primary goal is to provide a robust, secure, and responsive API that allows for efficient data management and seamless user experience across the GameDay application. By maintaining a high level of performance and reliability, we ensure that the application scales with user growth and that data integrity is maintained throughout the user journey.
