@@ -152,7 +152,7 @@ backend/
 │
 ├── data/                 # Data storage for CSV and ICS files
 │   ├── users.csv         # User information
-│   ├── games.ics         # Game schedules
+│   └── games.ics         # Game schedules
 │
 ├── models.py             # Database models
 ├── myapp.py              # Flask application setup and routes
@@ -163,6 +163,7 @@ backend/
     ├── auth.py           # Authentication routes
     ├── schedule.py       # Schedule management routes
     └── notifications.py  # Notification handling routes
+
 Aim & Goals:
 The backend's primary goal is to provide a robust, secure, and responsive API that allows for efficient data management and seamless user experience across the GameDay application. By maintaining a high level of performance and reliability, we ensure that the application scales with user growth and that data integrity is maintained throughout the user journey.
 
