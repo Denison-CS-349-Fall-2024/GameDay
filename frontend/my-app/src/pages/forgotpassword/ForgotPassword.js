@@ -1,6 +1,5 @@
-// src/pages/forgotpassword/ForgotPasswordPage.js
 import React from 'react';
-import ForgotPasswordComponent from '../../components/forgotpassword/ForgotPassword'; // Import the ForgotPassword component
+import ForgotPasswordComponent from '../../components/forgotpassword/ForgotPassword';
 import './ForgotPassword.css';
 
 const ForgotPasswordPage = () => {

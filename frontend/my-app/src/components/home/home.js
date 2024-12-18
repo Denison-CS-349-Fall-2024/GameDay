@@ -1,18 +1,17 @@
-// src/components/home/home.js
 import React, { useContext, useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import ScheduleSwitcher  from '../schedule_switcher/schedule_switcher'; 
+import ScheduleSwitcher from '../schedule_switcher/schedule_switcher'; 
 import './home.css';
 import SchedulePage from '../schedule/schedule'; 
 import { ScheduleContext, ScheduleProvider } from '../scheduleContext/scheduleContext';
 
 const HomeScreen = () => {
   const navigate = useNavigate();
-  const { schedule, setSchedule } = useContext(ScheduleContext); // Access setSchedule
-  const [hasFetched, setHasFetched] = useState(false); // New state to track if data has been fetched
-  const backend_host = "http://50.19.159.206:5000"; // Update as needed
+  const { schedule, setSchedule } = useContext(ScheduleContext); // Access schedule context
+  const [hasFetched, setHasFetched] = useState(false); // Track if schedule data has been fetched
+  const backend_host = "http://50.19.159.206:5000"; // Backend API URL
 
-  // Trigger to fetch the schedule when HomeScreen mounts
+  // Fetch schedule data when the component mounts
   useEffect(() => {
     const fetchSchedule = async () => {
       try {
@@ -20,7 +19,7 @@ const HomeScreen = () => {
         if (response.ok) {
           const updatedSchedule = await response.json();
           if (updatedSchedule.length > 0) {
-            setSchedule(updatedSchedule); // Update the schedule state
+            setSchedule(updatedSchedule); // Update schedule state
           } else {
             console.warn('Fetched schedule is empty.');
           }
@@ -32,36 +31,27 @@ const HomeScreen = () => {
       }
     };
 
-    // Only fetch if the schedule is empty
+    // Only fetch if not already fetched and schedule is empty
     if (!hasFetched && schedule.length === 0) {
       fetchSchedule();
+      setHasFetched(true); // Mark as fetched
     }
   }, [hasFetched, schedule, setSchedule]);
 
-  // Log to check if the schedule is available
+  // Debugging log to monitor schedule changes
   useEffect(() => {
-    console.log('Schedule in HomeScreen:', schedule); // Debugging log
+    console.log('Schedule in HomeScreen:', schedule);
   }, [schedule]);
 
-  const handleNotificationsClick = () => {
-    navigate('/notifications');
-  };
-
-  const handleStandingsClick = () => {
-    navigate('/standings');
-  };
-
-  const handleLogin = () => {
-    navigate('/login');
-  };
-
-  const handleSignUp = () => {
-    navigate('/signup');
-  };
+  // Navigation handlers
+  const handleNotificationsClick = () => navigate('/notifications');
+  const handleStandingsClick = () => navigate('/standings');
+  const handleLogin = () => navigate('/login');
+  const handleSignUp = () => navigate('/signup');
 
   return (
     <div className="home-container">
-      {/* Top header with Login and Sign Up buttons */}
+      {/* Top header with Login and Sign Up */}
       <div className="top-header">
         <h1>GameDay</h1>
         <div className="top-buttons">
@@ -70,20 +60,18 @@ const HomeScreen = () => {
         </div>
       </div>
 
-      {/* Main header hub */}
+      {/* Main header with navigation */}
       <div className="header">
         <button className="header-button" onClick={handleNotificationsClick}>Notifications</button>
         <button className="header-button" onClick={handleStandingsClick}>Standings</button>
       </div>
 
-
+      {/* Schedule section */}
       <div className="schedule-switcher">
-        {/* <ScheduleSwitcher/>  */}
-        <SchedulePage readOnly={true} allowImport={false}/>
-        
+        <SchedulePage readOnly={true} allowImport={false} />
       </div>
 
-      {/* Footer with Contact Us and Meet the Team buttons */}
+      {/* Footer */}
       <div className="footer">
         <button className="footer-button">Contact Us</button>
         <button className="footer-button">Meet the Team</button>

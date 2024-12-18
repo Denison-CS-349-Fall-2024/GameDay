@@ -1,25 +1,26 @@
+/* Gen AI */
 :root {
-  --dark-grey-bg: #333; /* Dark grey for the entire background */
-  --box-grey-bg: #444; /* Grey for smaller boxes */
-  --text-white: #fff; /* White text */
-  --button-grey: #666; /* Grey buttons */
-  --button-hover-grey: #777; /* Lighter grey for button hover */
-  --box-border-radius: 8px; /* Consistent border radius for boxes */
-  --box-padding: 20px; /* Consistent padding for boxes */
+  --dark-grey-bg: #333; /* Background: Dark grey */
+  --box-grey-bg: #444; /* Box background: Grey */
+  --text-white: #fff; /* Text: White */
+  --button-grey: #666; /* Buttons: Grey */
+  --button-hover-grey: #777; /* Buttons on hover: Lighter grey */
+  --box-border-radius: 8px; /* Rounded corners for boxes */
+  --box-padding: 20px; /* Padding for boxes */
 }
 
 body, html {
   margin: 0;
   padding: 0;
   height: 100%;
-  background-color: var(--dark-grey-bg); /* Dark grey for the entire background */
+  background-color: var(--dark-grey-bg); /* Set overall background */
 }
 
 .dashboard {
   display: flex;
   flex-direction: column;
   min-height: 100vh;
-  padding-bottom: 60px; /* Add space for footer */
+  padding-bottom: 60px; /* Space for footer */
 }
 
 .dashboard-header {
@@ -28,104 +29,101 @@ body, html {
   align-items: center;
   background-color: #000; /* Black header */
   color: var(--text-white);
-  padding: 10px 20px; /* Reduce padding for a smaller header */
+  padding: 10px 20px; /* Header padding */
 }
 
 .dashboard-header h1 {
   margin: 0;
-  font-size: 1.5em; /* Make the header smaller */
+  font-size: 1.5em; /* Smaller header text */
 }
 
 .dashboard-header nav {
   display: flex;
-  gap: 10px; /* Add space between buttons */
+  gap: 10px; /* Space between buttons */
 }
 
 .dashboard-header nav ul {
   display: flex;
-  list-style: none;
+  list-style: none; /* Remove bullet points */
   margin: 0;
   padding: 0;
-  gap: 10px;
+  gap: 10px; /* Space between items */
 }
 
 .dashboard-header nav ul li {
   cursor: pointer;
-  padding: 8px 15px; /* Adjust padding for smaller buttons */
+  padding: 8px 15px; /* Button padding */
   background-color: var(--button-grey);
   color: var(--text-white);
   border-radius: 20px;
-  transition: background-color 0.3s;
+  transition: background-color 0.3s; /* Smooth hover effect */
 }
 
 .dashboard-header nav ul li:hover {
-  background-color: var(--button-hover-grey);
+  background-color: var(--button-hover-grey); /* Change color on hover */
 }
 
 main {
   padding: 20px;
   flex: 1;
-  background-color: var(--dark-grey-bg); /* Matches the entire background */
+  background-color: var(--dark-grey-bg); /* Match background */
 }
 
-/* Section Header Styling */
 section {
-  text-align: center; /* Centers text horizontally */
-  margin: 0 auto; /* Centers the section container */
-  padding: 20px 0; /* Add vertical padding */
+  text-align: center; /* Center text */
+  margin: 0 auto; /* Center container */
+  padding: 20px 0; /* Add vertical spacing */
 }
 
 section h2 {
-  color: var(--text-white); /* Ensure text is white */
+  color: var(--text-white); /* White text */
   margin-bottom: 15px;
 }
 
 section p {
-  color: var(--text-white); /* Ensure text is white */
-  margin: 5px 0; /* Add margin around the paragraph */
+  color: var(--text-white); /* White text */
+  margin: 5px 0;
 }
 
-/* Section Boxes */
 .dashboard-components {
   display: flex;
-  justify-content: center; /* Centers the components horizontally */
-  gap: 20px; /* Reduce gap between boxes */
-  flex-wrap: wrap; /* Allow wrapping on smaller screens */
+  justify-content: center; /* Center horizontally */
+  gap: 20px; /* Space between boxes */
+  flex-wrap: wrap; /* Wrap on smaller screens */
 }
 
 .dashboard-components > div {
-  background-color: var(--text-white); /* White background for the boxes */
-  color: black; /* Black text color for the content */
+  background-color: var(--text-white); /* White boxes */
+  color: black;
   padding: var(--box-padding);
   border-radius: var(--box-border-radius);
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2); /* Shadow for depth */
   flex: 1;
-  max-width: 500px; /* Wider boxes */
+  max-width: 500px; /* Set box width */
+  min-height: 300px; /* Consistent height */
   display: flex;
   flex-direction: column;
   justify-content: space-between;
   box-sizing: border-box;
-  min-height: 300px; /* Ensure consistent height */
 }
 
 .dashboard-components > div h3 {
-  color: black; /* Black header text */
+  color: black;
   margin-top: 0;
-  font-size: 1.25em; /* Slightly larger header */
-  text-align: left; /* Align to the left for readability */
+  font-size: 1.25em; /* Larger header text */
+  text-align: left; /* Align left for readability */
 }
 
 .dashboard-components > div p {
-  color: black; /* Black text for the paragraph */
+  color: black;
   margin: 10px 0;
   line-height: 1.5; /* Improve readability */
 }
 
 .dashboard-components > div .footer-button {
-  align-self: center; /* Center the button horizontally */
+  align-self: center; /* Center button horizontally */
 }
 
-/* Button Styling */
 .footer-button {
   background-color: var(--button-grey);
   color: var(--text-white);
@@ -141,24 +139,22 @@ section p {
   background-color: var(--button-hover-grey);
 }
 
-/* Footer */
 .dashboard-footer {
   background-color: #000; /* Black footer */
   padding: 10px;
   display: flex;
   justify-content: center;
-  gap: 20px;
+  gap: 20px; /* Space between footer elements */
   color: var(--text-white);
 }
 
-/* Modal Styling */
 .announcement-modal {
   position: fixed;
   top: 0;
   left: 0;
   width: 100%;
   height: 100%;
-  background-color: rgba(0, 0, 0, 0.5);
+  background-color: rgba(0, 0, 0, 0.5); /* Transparent overlay */
   display: flex;
   justify-content: center;
   align-items: center;
@@ -166,31 +162,29 @@ section p {
 }
 
 .modal-content {
-  background: #ffffff;
-  padding: 20px; /* Adjusted padding to fit textarea */
+  background: #fff; /* Modal background */
+  padding: 20px;
   border-radius: 8px;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-  width: 500px; /* Increased width */
+  width: 500px;
   max-width: 90%; /* Responsive width */
-  overflow: hidden; /* Prevent overflow */
 }
 
 .announcement-textarea {
-  width: calc(100% - 20px); /* Ensures it fits within the modal padding */
-  height: 100px; /* Fixed height */
-  resize: none; /* Prevent resizing */
+  width: calc(100% - 20px);
+  height: 100px; /* Fixed size */
+  resize: none;
   border: 1px solid #ccc;
   border-radius: 4px;
   padding: 10px;
   font-size: 1rem;
   font-family: Arial, sans-serif;
   color: #333;
-  box-sizing: border-box; /* Include padding and border in width/height calculations */
-  margin: 0; /* Remove unintended margins */
+  margin: 0;
 }
 
 .announcement-textarea::placeholder {
-  color: #888;
+  color: #888; /* Placeholder text color */
 }
 
 .modal-buttons {
@@ -219,11 +213,9 @@ section p {
 
 .submit-button {
   background-color: #4a90e2;
-  color: #ffffff;
+  color: #fff;
 }
 
 .submit-button:hover {
   background-color: #357abd;
 }
-
-

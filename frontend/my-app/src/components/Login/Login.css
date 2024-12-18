@@ -1,16 +1,14 @@
-/* src/components/login/Login.css */
 .login-page {
   display: flex;
   justify-content: center;
   align-items: center;
   height: 100vh;
-  background-image: url('/public/assets/vb.jpg'); /* Adjust path as needed */
+  background-image: url('/public/assets/vb.jpg');
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
 }
 
-/* Add this to .login-form */
 .login-form {
   display: flex;
   flex-direction: column;
@@ -35,7 +33,6 @@
   z-index: -1;
 }
 
-/* Rest of the styles remain the same */
 .form-group {
   margin-bottom: 15px;
 }

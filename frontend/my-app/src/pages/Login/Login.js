@@ -1,6 +1,5 @@
-// src/pages/login/Login.js
 import React from 'react';
-import LoginComponent from '../../components/Login/Login'; // Ensure this path is correct
+import LoginComponent from '../../components/Login/Login';
 import './Login.css';
 
 const Login = () => {

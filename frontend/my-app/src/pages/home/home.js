@@ -1,4 +1,3 @@
-// src/pages/home/home.js
 import React from 'react';
 import './home.css';
 

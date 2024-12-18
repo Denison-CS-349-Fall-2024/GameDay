@@ -4,8 +4,8 @@
     justify-content: center;
     align-items: center;
     height: 100vh;
-    background-color: #ffffff; /* Light background for Sign Up page */
-    background-image: url('/public/assets/vb.jpg'); /* Optional background image */
+    background-color: #ffffff; 
+    background-image: url('/public/assets/vb.jpg');
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;

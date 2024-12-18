@@ -1,5 +1,3 @@
-/* src/components/home/home.css */
-
 :root {
   --primary-color: #333; /* Dark grey for headers and footer */
   --secondary-color: #444; /* Slightly lighter grey for secondary elements */
@@ -94,7 +92,7 @@ body, html {
   background-color: var(--button-hover-color);
 }
 
-/* Sticky Footer */
+/* Gen AI */
 .footer {
   position: fixed;
   bottom: 0;
@@ -123,3 +121,4 @@ body, html {
 .footer-button:hover {
   background-color: var(--button-hover-color);
 }
+/* Gen AI */

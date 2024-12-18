@@ -1,4 +1,3 @@
-// src/pages/dashboard/DashboardPage.js
 import React from 'react';
 import DashboardComponent from '../../components/dashboard/Dashboard'; // Import the Dashboard component
 import './Dashboard.css';

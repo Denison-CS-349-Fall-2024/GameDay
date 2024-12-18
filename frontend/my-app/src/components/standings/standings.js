@@ -1,4 +1,3 @@
-// src/components/standings/Standings.js
 import React from 'react';
 import './standings.css';
 

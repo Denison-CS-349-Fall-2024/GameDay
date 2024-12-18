@@ -1,6 +1,6 @@
 // src/pages/signup/SignUpPage.js
 import React from 'react';
-import SignUpComponent from '../../components/signup/SignUp'; // Import the SignUp component
+import SignUpComponent from '../../components/signup/SignUp'; 
 import './SignUp.css';
 
 const SignUpPage = () => {

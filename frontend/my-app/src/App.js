@@ -8,12 +8,12 @@ import ForgotPasswordPage from './pages/forgotpassword/ForgotPassword';
 import DashboardPage from './pages/dashboard/Dashboard';
 import HomeScreen from './components/home/home';
 import Notifications from './components/notifications/notifications';
-import Standings from './components/standings/standings'; // Import Standings component
+import Standings from './components/standings/standings';
 import { ScheduleProvider } from './components/scheduleContext/scheduleContext';
 
 const App = () => {
   return (
-    <ScheduleProvider> {/* Wrap the whole app with ScheduleProvider */}
+    <ScheduleProvider> {}
       <Router>
         <Routes>
           <Route path="/login" element={<Login />} />
