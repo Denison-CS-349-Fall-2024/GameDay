@@ -1,4 +1,4 @@
-# GameDay Frontend Application README
+# GameDay README
 
 Overview:
 This repository contains the frontend code for GameDay, a web application built using React to design the frontend. The primary goal of GameDay is to provide users with an intuitive, responsive, and interactive interface. The app was designed with the user experience in mind, ensuring that navigation is seamless and accessible. From interaticing with the schedule to viewing standings and notifications, every page is structured to deliver an easy-to-use experience. React was chosen for its component-based architecture, enabling efficient UI updates and a smooth, dynamic experience. The frontend leverages various React features like state management and routing to facilitate real-time updates and interactions across different parts of the application.
